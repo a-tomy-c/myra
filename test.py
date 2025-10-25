@@ -1,5 +1,6 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout
 from PySide6.QtCore import Qt
+from ui.widget_playlist import WidgetPlaylist
 
 
 class Ventana(QMainWindow):
@@ -9,6 +10,8 @@ class Ventana(QMainWindow):
 
     def _cnf_ventana(self):
         self.resize(320, 400)
+        wplaylist = WidgetPlaylist()
+        self.setCentralWidget(wplaylist)
 
 
 if __name__ == "__main__":

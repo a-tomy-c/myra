@@ -10,6 +10,7 @@ class Ventana(QMainWindow):
 
     def _cnf_ventana(self):
         self.resize(320, 400)
+        # PRUEBA PLAYLIST
         wplaylist = WidgetPlaylist()
         self.setCentralWidget(wplaylist)
 

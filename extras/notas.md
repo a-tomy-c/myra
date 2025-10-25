@@ -8,3 +8,4 @@ avance del proyecto
     - botones
     - ajuste de columnas
 
+- se agrego la ventana modal, para agregar una Url

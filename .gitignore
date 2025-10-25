@@ -5,3 +5,6 @@ tests/
 *.txt
 *.jpg
 *.png
+*.ui
+*.txt
+

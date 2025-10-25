@@ -1,0 +1,44 @@
+name: ✨ Feature Request
+description: Sugerir una nueva funcionalidad para el proyecto
+labels: 'enhancement'
+title: "[FEATURE] Nombre de la funcionalidad propuesta"
+assignees: 
+  - a-tomy-c
+projects:
+  - users/a-tomy-c/projects/1
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¡Gracias por tu idea! Por favor, sé lo más detallado posible.
+
+  - type: textarea
+    id: detailed-proposal
+    attributes:
+      label: Propuesta detallada y necesidad
+      description: Describe claramente el problema o necesidad que esta funcionalidad cubriría y cómo se vería la solución.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity-estimate
+    attributes:
+      label: 🧠 Complejidad estimada
+      description: ¿Cuál es tu estimación inicial de esfuerzo?
+      options:
+        - Baja (unas pocas horas)
+        - Media (algunos días)
+        - Alta (semanas)
+        - No estoy seguro/a
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: existing-features
+    attributes:
+      label: ¿Afecta a funcionalidades existentes?
+      options:
+        - label: No, es completamente nueva
+        - label: Sí, modifica comportamiento existente
+        - label: No estoy seguro/a

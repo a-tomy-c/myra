@@ -1,0 +1,29 @@
+name: Bug Report 🐛
+description: Reportar un error o comportamiento inesperado.
+labels: bug
+title: "[BUG] Descripción breve del problema"
+assignees: 
+  - a-tomy-c
+projects:
+  - users/a-tomy-c/projects/1
+
+body:
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Descripción del problema
+      description: Una descripción clara y concisa de cual es el error.
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidad
+      description: ¿Cuál es el impacto de este problema?
+      options:
+        - Crítico - La aplicación no funciona
+        - Alto - Funcionalidad principal afectada
+        - Medio - Funcionalidad secundaria afectada
+        - Bajo - Problema cosmético o menor
+    validations:
+      required: true

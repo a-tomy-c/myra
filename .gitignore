@@ -1,0 +1,8 @@
+adicional/
+*__pycache__/
+tests/
+*.log
+*.txt
+*.jpg
+*.png
+*.yml

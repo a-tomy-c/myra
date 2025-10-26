@@ -14,5 +14,10 @@ avance del proyecto
 - orden a la playlist (interfaz) widgets en modulos
 
 
+### UTIL
+- he creado el modulo `read_write` para crear archivos y leer archivos de configuracion, asi tambien para guardar la playlist
+
 ### To do
+- crear archivo `yml` con configuraciones
+- guardar items en un archivo `playlist.yml`
 

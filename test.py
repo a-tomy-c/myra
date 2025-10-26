@@ -10,8 +10,11 @@ class Ventana(QMainWindow):
 
     def _cnf_ventana(self):
         self.resize(320, 400)
+        # self.setStyleSheet('background-color:#383235;')
+        # PRUEBA PLAYLIST
         wplaylist = WidgetPlaylist()
         self.setCentralWidget(wplaylist)
+
 
 
 if __name__ == "__main__":

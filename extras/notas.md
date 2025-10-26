@@ -8,3 +8,10 @@ avance del proyecto
     - botones
     - ajuste de columnas
 
+- se agrego la ventana modal, para agregar una Url
+- la ventana modal ya agrega el item a la lista
+- el icono se puede redimensionar con un slider
+
+
+### To do
+- le falta orden a la playlist (interfaz)

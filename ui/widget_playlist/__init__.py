@@ -5,11 +5,11 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import QSize, Qt
-from ui.skin_myra_playlist import Ui_Form
-from ui.dialgog_add_url import DialogAddUrl, Viewer
+from ui.widget_playlist.skin_playlist import Ui_Playlist
+from ui.widget_modal import WidgetModal, Viewer
 
 
-class WidgetPlaylist(QWidget, Ui_Form):
+class WidgetPlaylist(QWidget, Ui_Playlist):
     def __init__(self, *args, **kw):
         super().__init__()
         self.setupUi(self)
@@ -26,7 +26,7 @@ class WidgetPlaylist(QWidget, Ui_Form):
        self.sld_size_icons.sliderReleased.connect(self._set_row_height)
 
     def open_dialog_new_url(self):
-        dialog = DialogAddUrl(self)
+        dialog = WidgetModal(self)
         if dialog.exec() == QDialog.DialogCode.Accepted:
             print("agregada nueva url")
             name, url, image = dialog.get_data()

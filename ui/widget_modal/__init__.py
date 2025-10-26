@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QDialog, QWidget, QFileDialog, QLabel
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt, QSize
-from ui.skin_dialog_add_url import Ui_Dialog
+from ui.widget_modal.skin_dialog_add_url import Ui_Dialog
 from pathlib import Path
 
 
@@ -40,7 +40,7 @@ class Viewer(QLabel):
             self.setPixmap(pixmap)
 
 
-class DialogAddUrl(QDialog, Ui_Dialog):
+class WidgetModal(QDialog, Ui_Dialog):
     def __init__(self, *args, **kw):
         super().__init__(*args, **kw)
         self.setupUi(self)

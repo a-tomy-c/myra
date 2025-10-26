@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'skin_myra_playlist.ui'
+## Form generated from reading UI file 'skin_playlist.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.3
 ##
@@ -20,16 +20,16 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QHBoxLay
     QSlider, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(344, 415)
-        self.verticalLayout_2 = QVBoxLayout(Form)
+class Ui_Playlist(object):
+    def setupUi(self, Playlist):
+        if not Playlist.objectName():
+            Playlist.setObjectName(u"Playlist")
+        Playlist.resize(344, 415)
+        self.verticalLayout_2 = QVBoxLayout(Playlist)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.tw_playlist = QTableWidget(Form)
+        self.tw_playlist = QTableWidget(Playlist)
         if (self.tw_playlist.columnCount() < 3):
             self.tw_playlist.setColumnCount(3)
         brush = QBrush(QColor(128, 128, 128, 255))
@@ -65,7 +65,7 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.tw_playlist)
 
-        self.fm_bot = QFrame(Form)
+        self.fm_bot = QFrame(Playlist)
         self.fm_bot.setObjectName(u"fm_bot")
         self.fm_bot.setFrameShape(QFrame.Shape.StyledPanel)
         self.fm_bot.setFrameShadow(QFrame.Shadow.Raised)
@@ -146,19 +146,19 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
 
-        self.retranslateUi(Form)
+        self.retranslateUi(Playlist)
 
-        QMetaObject.connectSlotsByName(Form)
+        QMetaObject.connectSlotsByName(Playlist)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+    def retranslateUi(self, Playlist):
+        Playlist.setWindowTitle(QCoreApplication.translate("Playlist", u"Form", None))
         ___qtablewidgetitem = self.tw_playlist.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"ICON", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Playlist", u"ICON", None));
         ___qtablewidgetitem1 = self.tw_playlist.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"NAME", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Playlist", u"NAME", None));
         ___qtablewidgetitem2 = self.tw_playlist.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"URL", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Playlist", u"URL", None));
         self.btn_add.setText("")
         self.lb_extra.setText("")
         self.btn_open.setText("")

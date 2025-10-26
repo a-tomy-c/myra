@@ -11,7 +11,8 @@ avance del proyecto
 - se agrego la ventana modal, para agregar una Url
 - la ventana modal ya agrega el item a la lista
 - el icono se puede redimensionar con un slider
+- orden a la playlist (interfaz) widgets en modulos
 
 
 ### To do
-- le falta orden a la playlist (interfaz)
+

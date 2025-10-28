@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QWidget, QTableWidget, QTableView, QTableWidgetItem, QHeaderView, QAbstractItemView,
     QDialog, QFileDialog, QVBoxLayout, QLabel
 )
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QImage, QIcon
 from PySide6.QtCore import QSize, Qt
 from ui.widget_playlist.skin_playlist import Ui_Playlist
 from ui.widget_modal import WidgetModal, Viewer
@@ -20,7 +20,7 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
        hh:QHeaderView = self.tw_playlist.horizontalHeader()
        hh.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
        hh.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
-       self.sld_size_icons.setRange(24, 60)
+       self.sld_size_icons.setRange(20, 60)
 
        # agregando dialogo
        self.btn_add.clicked.connect(self.open_dialog_new_url)
@@ -41,27 +41,40 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
     def add_item(self, title:str, url:str, image:str, **kw):
         index_row = self.tw_playlist.rowCount()
         self.tw_playlist.insertRow(index_row)
+
         item_name = QTableWidgetItem(title)
         item_url = QTableWidgetItem(url)
         self.tw_playlist.setItem(index_row, 1, item_name)
         self.tw_playlist.setItem(index_row, 2, item_url)
         value = self.sld_size_icons.value()
+        viewer:QPixmap = self.get_pixmap(image)
+        item_icon = QTableWidgetItem()
+        item_icon.setIcon(QIcon(viewer))
+        item_icon.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.tw_playlist.setItem(index_row, 0, item_icon)
 
-        viewer = Viewer()
-        viewer.set_image(image)
-        viewer.resize_image(size=value)
         self.tw_playlist.setRowHeight(index_row, value)
-        self.tw_playlist.setCellWidget(index_row, 0, viewer)
-        data = dict(title=title, url=url, image=image)
-        item_name.setData(Qt.ItemDataRole.UserRole, data)
+        # self.tw_playlist.setCellWidget(index_row, 0, viewer)
+        # data = dict(title=title, url=url, image=image)
+        # item_name.setData(Qt.ItemDataRole.UserRole, data)
+
+    def get_pixmap(self, path:str) -> QPixmap:
+        value = self.sld_size_icons.maximum()
+        pixmap = QPixmap(path)
+        if not pixmap.isNull():
+            return pixmap.scaled(
+                    QSize(value, value),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                )
 
     def _set_row_height(self):
         value = self.sld_size_icons.value()
-        for index in range(self.tw_playlist.rowCount()):
-            self.tw_playlist.setRowHeight(index, value)
+        self.tw_playlist.setIconSize(QSize(value, value))
+        rows = self.tw_playlist.rowCount()
+        for row in range(rows):
+            self.tw_playlist.setRowHeight(row, value+4)
 
-            viewer:Viewer = self.tw_playlist.cellWidget(index, 0)
-            viewer.resize_image(size=value)
 
     def save(self):
         def get_data_row(row:int) -> list:
@@ -103,9 +116,10 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
 
     def _move_item(self, irow:int, new_irow:int):
         def take_data_row(row:int) -> dict:
-            viewer:Viewer = self.tw_playlist.cellWidget(row, 0)
-            # if viewer:
-            #     self.tw_playlist.removeCellWidget(row, 0)
+            # viewer:Viewer = self.tw_playlist.cellWidget(row, 0)
+            # # if viewer:
+            # #     self.tw_playlist.removeCellWidget(row, 0)
+            viewer = self.tw_playlist.takeItem(row, 0)
             title = self.tw_playlist.takeItem(row, 1)
             url = self.tw_playlist.takeItem(row, 2)
             return dict(viewer=viewer, title=title, url=url)
@@ -113,14 +127,15 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         def set_data_row(row:int, viewer, title, url):
             # if viewer:
             #     self.tw_playlist.setCellWidget(row, 0, viewer)
+            self.tw_playlist.setItem(row, 0, viewer)
             self.tw_playlist.setItem(row, 1, title)
             self.tw_playlist.setItem(row, 2, url)
 
         data = take_data_row(new_irow)
         set_data_row(new_irow, **take_data_row(irow))
-        print("hasta aqui reemplazo la linea objetivo")
+        # print("hasta aqui reemplazo la linea objetivo")
         set_data_row(irow, **data)
-        print("hasta aqui reemplazo la linea actual")
+        # print("hasta aqui reemplazo la linea actual")
         self.tw_playlist.setCurrentCell(new_irow, 0)        
 
     def move_row_up(self):

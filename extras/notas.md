@@ -16,6 +16,7 @@ avance del proyecto
 
 ### UTIL
 - he creado el modulo `read_write` para crear archivos y leer archivos de configuracion, asi tambien para guardar la playlist
+- he creado un modulo para leer y escribir archivos `.m3u`
 
 ### To do
 - crear archivo `yml` con configuraciones

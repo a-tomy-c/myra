@@ -27,6 +27,8 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
        self.sld_size_icons.sliderReleased.connect(self._set_row_height)
        self.btn_open.clicked.connect(self._test_open_playlist)
        self.btn_edit.clicked.connect(self.save)
+       self.btn_up.clicked.connect(self.move_row_up)
+       self.btn_down.clicked.connect(self.mover_row_down)
 
     def open_dialog_new_url(self):
         dialog = WidgetModal(self)
@@ -87,4 +89,47 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
             self.add_item(**d)
 
     def _test_open_playlist(self):
+        self.tw_playlist.setRowCount(0)
         self.open_m3u(filename_m3u='playlist_myra.m3u')
+
+    # def get_data_row(self, row:int) -> tuple[Viewer, str, str, int]:
+    #     """retorna dict:{Viewer, title, url, seconds}"""
+    #     viewer:Viewer = self.tw_playlist.cellWidget(row, 0)
+    #     title = self.tw_playlist.item(row, 1).text()
+    #     url = self.tw_playlist.item(row, 2).text()
+    #     # return viewer, title, url, 0
+    #     return dict(viewer=viewer, title=title, url=url, seconds=0)
+
+
+    def _move_item(self, irow:int, new_irow:int):
+        def take_data_row(row:int) -> dict:
+            viewer:Viewer = self.tw_playlist.cellWidget(row, 0)
+            # if viewer:
+            #     self.tw_playlist.removeCellWidget(row, 0)
+            title = self.tw_playlist.takeItem(row, 1)
+            url = self.tw_playlist.takeItem(row, 2)
+            return dict(viewer=viewer, title=title, url=url)
+        
+        def set_data_row(row:int, viewer, title, url):
+            # if viewer:
+            #     self.tw_playlist.setCellWidget(row, 0, viewer)
+            self.tw_playlist.setItem(row, 1, title)
+            self.tw_playlist.setItem(row, 2, url)
+
+        data = take_data_row(new_irow)
+        set_data_row(new_irow, **take_data_row(irow))
+        print("hasta aqui reemplazo la linea objetivo")
+        set_data_row(irow, **data)
+        print("hasta aqui reemplazo la linea actual")
+        self.tw_playlist.setCurrentCell(new_irow, 0)        
+
+    def move_row_up(self):
+        index_row:int = self.tw_playlist.currentRow()
+        if index_row > 0 and index_row != -1:
+            self._move_item(index_row, index_row-1)
+
+    def mover_row_down(self):
+        index_row:int = self.tw_playlist.currentRow()
+        if index_row<self.tw_playlist.rowCount()-1 and index_row!=-1:
+            self._move_item(index_row, index_row+1)
+

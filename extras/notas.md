@@ -14,6 +14,7 @@ avance del proyecto
 - orden a la playlist (interfaz) widgets en modulos
 - crea playlist `.m3u`
 - carga archivo `.m3u`
+- ahora se puede mover los items arriba, abajo (mover el icono falla, lo deje comentado)
 
 
 ### UTIL
@@ -24,4 +25,6 @@ avance del proyecto
 - [ ] crear archivo `yml` con configuraciones
 - [x] guardar items en un archivo `playlist.yml`
 - [ ] abrir dialogo para guardar un archivo `.m3u` (de momento solo crea el m3u por defecto)
+- [ ] cambiar el modo de agregar icono a la playlist (el modo actual tiene errores al mover el item de icono el resto funciona)
+
 

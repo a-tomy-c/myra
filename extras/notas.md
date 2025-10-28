@@ -12,6 +12,8 @@ avance del proyecto
 - la ventana modal ya agrega el item a la lista
 - el icono se puede redimensionar con un slider
 - orden a la playlist (interfaz) widgets en modulos
+- crea playlist `.m3u`
+- carga archivo `.m3u`
 
 
 ### UTIL
@@ -19,6 +21,7 @@ avance del proyecto
 - he creado un modulo para leer y escribir archivos `.m3u`
 
 ### To do
-- crear archivo `yml` con configuraciones
-- guardar items en un archivo `playlist.yml`
+- [ ] crear archivo `yml` con configuraciones
+- [x] guardar items en un archivo `playlist.yml`
+- [ ] abrir dialogo para guardar un archivo `.m3u` (de momento solo crea el m3u por defecto)
 

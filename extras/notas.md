@@ -20,6 +20,9 @@ avance del proyecto
 - [x] guardar items en un archivo `playlist.m3u`
 - [x] cambiar el modo de agregar icono a la playlist (el modo actual tiene errores al mover el item de icono el resto funciona) **FIXED**
 - al momento de asignar el icono es mejor usar el maximo valor de un inicio , porque luego ya no se puede redimensionar mas grande si el valor es intermedio
+- al hacer doble click se obtiene info de la fila
+- se puede vaciar la lista (clear items playlist)
+- se puede borrar la fila seleccionada
 
 
 ### UTIL

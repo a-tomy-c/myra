@@ -23,6 +23,10 @@ avance del proyecto
 - al hacer doble click se obtiene info de la fila
 - se puede vaciar la lista (clear items playlist)
 - se puede borrar la fila seleccionada
+- agregue tamaño inicial de los icono se puede asignar `init_row_height`
+- [x] abrir dialogo para guardar un archivo `.m3u`
+- cambie el modo de obtener data de la fila para guardar la playlist como .m3u (seguia con el anterior, ya lo actualize)
+- [x] save cambiar modo de obtener data de una fila **FIXED**
 
 
 ### UTIL
@@ -31,6 +35,19 @@ avance del proyecto
 
 ### To do
 - [ ] crear archivo `yml` con configuraciones
-- [ ] abrir dialogo para guardar un archivo `.m3u` (de momento solo crea el m3u por defecto)
+- [ ] playlist: abrir y borrar anterior playlist
+- [ ] playlist: abrir y agregar a la anterior playlist
+
+al abrir un `m3u` playlist:
+- [ ] agregar y borrar
+- [ ] agregar adjuntar
+
+
+- [ ] cambiar el icono y nombre de la variable de editar por guardar 
+- [ ] orden y documentar metodos
+- [ ] crear archivo de configuracion, asi como los metodos
+- [ ] cargar estilos, por defecto
+- [ ] agreger metodo de recargar ui (playlist)
+- [ ] asignar size a la playlist
 
 

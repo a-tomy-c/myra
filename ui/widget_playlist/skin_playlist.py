@@ -33,8 +33,8 @@ class Ui_Playlist(object):
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.tw_playlist = QTableWidget(Playlist)
-        if (self.tw_playlist.columnCount() < 3):
-            self.tw_playlist.setColumnCount(3)
+        if (self.tw_playlist.columnCount() < 2):
+            self.tw_playlist.setColumnCount(2)
         brush = QBrush(QColor(128, 128, 128, 255))
         brush.setStyle(Qt.BrushStyle.SolidPattern)
         font = QFont()
@@ -49,11 +49,6 @@ class Ui_Playlist(object):
         __qtablewidgetitem1.setBackground(QColor(0, 0, 0, 200));
         __qtablewidgetitem1.setForeground(brush);
         self.tw_playlist.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        __qtablewidgetitem2.setFont(font);
-        __qtablewidgetitem2.setBackground(QColor(0, 0, 0, 200));
-        __qtablewidgetitem2.setForeground(brush);
-        self.tw_playlist.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tw_playlist.setObjectName(u"tw_playlist")
         self.tw_playlist.setFrameShape(QFrame.Shape.NoFrame)
         self.tw_playlist.setFrameShadow(QFrame.Shadow.Plain)
@@ -168,11 +163,9 @@ class Ui_Playlist(object):
     def retranslateUi(self, Playlist):
         Playlist.setWindowTitle(QCoreApplication.translate("Playlist", u"Form", None))
         ___qtablewidgetitem = self.tw_playlist.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Playlist", u"ICON", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Playlist", u"NAME", None));
         ___qtablewidgetitem1 = self.tw_playlist.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Playlist", u"NAME", None));
-        ___qtablewidgetitem2 = self.tw_playlist.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Playlist", u"URL", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Playlist", u"URL", None));
         self.btn_add.setText("")
         self.lb_extra.setText("")
         self.btn_open.setText("")

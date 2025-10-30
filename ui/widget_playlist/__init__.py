@@ -23,7 +23,7 @@ class ItemWithIcon(QTableWidgetItem):
         pixmap = self.get_pixmap(height=h)
         if pixmap:
             self.setIcon(QIcon(pixmap))
-            self.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            # self.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
 
     def get_image(self) -> str:
         return self.IMAGE
@@ -77,16 +77,13 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         index_row = self.tw_playlist.rowCount()
         self.tw_playlist.insertRow(index_row)
 
-        item_name = QTableWidgetItem(title)
-        item_name.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+        item_name = ItemWithIcon(title)
         item_url = QTableWidgetItem(url)
-        self.tw_playlist.setItem(index_row, 1, item_name)
-        self.tw_playlist.setItem(index_row, 2, item_url)
+        self.tw_playlist.setItem(index_row, 0, item_name)
+        self.tw_playlist.setItem(index_row, 1, item_url)
         value = self.sld_size_icons.value()
         max_value = self.sld_size_icons.maximum()
-        item_icon = ItemWithIcon()
-        item_icon.set_image(file=image, h=max_value)
-        self.tw_playlist.setItem(index_row, 0, item_icon)
+        item_name.set_image(file=image, h=max_value)
 
         self.tw_playlist.setRowHeight(index_row, value)
         data = dict(title=title, url=url, image=image)
@@ -118,10 +115,10 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
     def save(self):
         def get_data_row(row:int) -> list:
             """retorna dict:{Viewer, title, url, seconds}"""
-            viewer = self.tw_playlist.item(row, 0)
-            title = self.tw_playlist.item(row, 1).text()
-            url = self.tw_playlist.item(row, 2).text()
-            return dict(image=viewer.get_image(), title=title, url=url, seconds=0)
+            item = self.tw_playlist.item(row, 0)
+            title = item.text()
+            url = self.tw_playlist.item(row, 1).text()
+            return dict(image=item.get_image(), title=title, url=url, seconds=0)
         
         def get_data(rows:int) -> list[dict]:
             """retorna list:[{Viewer, title, url, seconds}, {...}]"""
@@ -145,7 +142,7 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         if len(items) > 0:
             for d in items:
                 self.add_item(**d)
-            self.tw_playlist.setCurrentCell(0, 2)
+            self.tw_playlist.setCurrentCell(0, 1)
 
     def _test_open_playlist(self):
         self.tw_playlist.setRowCount(0)
@@ -161,15 +158,13 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
 
     def _move_item(self, irow:int, new_irow:int):
         def take_data_row(row:int) -> dict:
-            viewer = self.tw_playlist.takeItem(row, 0)
-            title = self.tw_playlist.takeItem(row, 1)
-            url = self.tw_playlist.takeItem(row, 2)
-            return dict(viewer=viewer, title=title, url=url)
+            title = self.tw_playlist.takeItem(row, 0)
+            url = self.tw_playlist.takeItem(row, 1)
+            return dict(title=title, url=url)
         
-        def set_data_row(row:int, viewer, title, url):
-            self.tw_playlist.setItem(row, 0, viewer)
-            self.tw_playlist.setItem(row, 1, title)
-            self.tw_playlist.setItem(row, 2, url)
+        def set_data_row(row:int, title, url):
+            self.tw_playlist.setItem(row, 0, title)
+            self.tw_playlist.setItem(row, 1, url)
 
         data = take_data_row(new_irow)
         set_data_row(new_irow, **take_data_row(irow))
@@ -197,7 +192,7 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
                 self.tw_playlist.setRowCount(0)
 
     def select_row(self, row:int, col:int):
-        item = self.tw_playlist.item(row, 2)
+        item = self.tw_playlist.item(row, 1)
         return item.data(Qt.ItemDataRole.UserRole)
     
     def delete_row(self):

@@ -29,6 +29,7 @@ avance del proyecto
 - [x] save cambiar modo de obtener data de una fila **FIXED**
 - agregue iconos, incluyendo el logo del programa
 - [x] cambiar el icono y nombre de la variable de editar por guardar 
+- cambie de 3 columnas a 2, quitando la columna icono que ya no era necesaria
 
 
 ### UTIL
@@ -44,5 +45,5 @@ avance del proyecto
 - [ ] cargar estilos, por defecto
 - [ ] agreger metodo de recargar ui (playlist)
 - [ ] asignar size a la playlist
-
+- [ ] cambiando de 3 columnas a 2
 

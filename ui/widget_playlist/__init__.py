@@ -53,17 +53,22 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
        # agregando dialogo
        self.btn_add.clicked.connect(self.open_dialog_new_url)
        self.sld_size_icons.sliderReleased.connect(self._set_row_height)
-       self.btn_open.clicked.connect(self._test_open_playlist)
-    #    self.btn_edit.clicked.connect(self.save)
+    #    self.btn_open.clicked.connect(self._test_open_playlist)
+    #    self.btn_save.clicked.connect(self.save)
+    #    self.btn_save.clicked.connect(self.remove_items)
+    #    self.btn_save.clicked.connect(self.open_load_m3u)
        self.btn_up.clicked.connect(self.move_row_up)
        self.btn_down.clicked.connect(self.move_row_down)
-       self.btn_edit.clicked.connect(self.remove_items)
        self.tw_playlist.cellDoubleClicked.connect(self.select_row)
+       self.btn_save.clicked.connect(self.save)
+       self.btn_open.clicked.connect(self.open_load_m3u)
+       self.init_row_height(40)
+       self.FOLDER_PLAYLIST = '.'
+       self.set_folder_playlists(path='adicional')
 
     def open_dialog_new_url(self):
         dialog = WidgetModal(self)
         if dialog.exec() == QDialog.DialogCode.Accepted:
-            print("agregada nueva url")
             name, url, image = dialog.get_data()
             if url:
                 self.add_item(name, url, image)
@@ -98,16 +103,22 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
                 )
 
     def _set_row_height(self):
-        value = self.sld_size_icons.value()
+        self.set_row_height(self.sld_size_icons.value())
+
+    def set_row_height(self, value:int, mod:int=4):
         self.tw_playlist.setIconSize(QSize(value, value))
         rows = self.tw_playlist.rowCount()
         for row in range(rows):
-            self.tw_playlist.setRowHeight(row, value+4)
+            self.tw_playlist.setRowHeight(row, value+mod)
+
+    def init_row_height(self, value:int):
+        self.sld_size_icons.setValue(value)
+        self.set_row_height(value)
 
     def save(self):
         def get_data_row(row:int) -> list:
             """retorna dict:{Viewer, title, url, seconds}"""
-            viewer:Viewer = self.tw_playlist.cellWidget(row, 0)
+            viewer = self.tw_playlist.item(row, 0)
             title = self.tw_playlist.item(row, 1).text()
             url = self.tw_playlist.item(row, 2).text()
             return dict(image=viewer.get_image(), title=title, url=url, seconds=0)
@@ -119,8 +130,14 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         rows = self.tw_playlist.rowCount()
         if rows > 0:
             data = get_data(rows)
-            m3u = FileM3u('playlist_myra.m3u')
-            m3u.write(data)
+            path = f'{self.FOLDER_PLAYLIST}/untitled.m3u'
+            filename, _ = QFileDialog.getSaveFileName(
+                self, 'Guardar archivo playlist .m3u', path,
+                'playlist (*.m3u);;Todos (*.*)'
+            )
+            if filename:
+                m3u = FileM3u(filename)
+                m3u.write(data)
 
     def open_m3u(self, filename_m3u:str):
         m3u = FileM3u(file_name=filename_m3u)
@@ -188,5 +205,19 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         if row >= 0:
             self.tw_playlist.removeRow(row)
 
-    # def open_load_m3u(self):
-    #     file = QMessageBox.
+    def open_load_m3u(self):
+        """dialog: selecciona un archivo m3u, adjunta"""
+        filename, _ = QFileDialog.getOpenFileName(
+            self, 'selecciona un archivo', self.FOLDER_PLAYLIST,
+            'playlist file (*.m3u);;todos los archivos (*.*)'
+        )
+        if filename:
+            self.open_m3u(filename)
+
+    def load_m3u(self):
+        """dialog: selecciona un archivo m3u, limpia y carga"""
+        self.tw_playlist.setRowCount(0)
+        self.open_load_m3u()
+
+    def set_folder_playlists(self, path:str):
+        self.FOLDER_PLAYLIST = path

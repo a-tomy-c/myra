@@ -19,14 +19,17 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFrame, QHBoxLay
     QHeaderView, QLabel, QPushButton, QSizePolicy,
     QSlider, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
+import ui.icons
 
 class Ui_Playlist(object):
     def setupUi(self, Playlist):
         if not Playlist.objectName():
             Playlist.setObjectName(u"Playlist")
-        Playlist.resize(344, 415)
+        Playlist.resize(399, 380)
         self.verticalLayout_2 = QVBoxLayout(Playlist)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.tw_playlist = QTableWidget(Playlist)
@@ -71,15 +74,18 @@ class Ui_Playlist(object):
         self.fm_bot.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.fm_bot)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 4, 0, 0)
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.btn_add = QPushButton(self.fm_bot)
         self.btn_add.setObjectName(u"btn_add")
         self.btn_add.setMinimumSize(QSize(35, 35))
         self.btn_add.setMaximumSize(QSize(40, 35))
-        icon = QIcon(QIcon.fromTheme(u"list-add"))
+        icon = QIcon()
+        icon.addFile(u":/w/plus.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_add.setIcon(icon)
         self.btn_add.setIconSize(QSize(30, 30))
+        self.btn_add.setFlat(True)
 
         self.horizontalLayout.addWidget(self.btn_add)
 
@@ -100,29 +106,35 @@ class Ui_Playlist(object):
         self.btn_open.setObjectName(u"btn_open")
         self.btn_open.setMinimumSize(QSize(35, 35))
         self.btn_open.setMaximumSize(QSize(35, 35))
-        icon1 = QIcon(QIcon.fromTheme(u"document-open"))
+        icon1 = QIcon()
+        icon1.addFile(u":/w/open-svgrepo-com.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_open.setIcon(icon1)
         self.btn_open.setIconSize(QSize(30, 30))
+        self.btn_open.setFlat(True)
 
         self.horizontalLayout.addWidget(self.btn_open)
 
-        self.btn_edit = QPushButton(self.fm_bot)
-        self.btn_edit.setObjectName(u"btn_edit")
-        self.btn_edit.setMinimumSize(QSize(35, 35))
-        self.btn_edit.setMaximumSize(QSize(35, 35))
-        icon2 = QIcon(QIcon.fromTheme(u"tools-check-spelling"))
-        self.btn_edit.setIcon(icon2)
-        self.btn_edit.setIconSize(QSize(30, 30))
+        self.btn_save = QPushButton(self.fm_bot)
+        self.btn_save.setObjectName(u"btn_save")
+        self.btn_save.setMinimumSize(QSize(35, 35))
+        self.btn_save.setMaximumSize(QSize(35, 35))
+        icon2 = QIcon()
+        icon2.addFile(u":/w/save.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.btn_save.setIcon(icon2)
+        self.btn_save.setIconSize(QSize(24, 24))
+        self.btn_save.setFlat(True)
 
-        self.horizontalLayout.addWidget(self.btn_edit)
+        self.horizontalLayout.addWidget(self.btn_save)
 
         self.btn_up = QPushButton(self.fm_bot)
         self.btn_up.setObjectName(u"btn_up")
         self.btn_up.setMinimumSize(QSize(35, 35))
         self.btn_up.setMaximumSize(QSize(35, 35))
-        icon3 = QIcon(QIcon.fromTheme(u"go-up"))
+        icon3 = QIcon()
+        icon3.addFile(u":/w/up.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_up.setIcon(icon3)
-        self.btn_up.setIconSize(QSize(30, 30))
+        self.btn_up.setIconSize(QSize(26, 26))
+        self.btn_up.setFlat(True)
 
         self.horizontalLayout.addWidget(self.btn_up)
 
@@ -130,9 +142,11 @@ class Ui_Playlist(object):
         self.btn_down.setObjectName(u"btn_down")
         self.btn_down.setMinimumSize(QSize(35, 35))
         self.btn_down.setMaximumSize(QSize(35, 35))
-        icon4 = QIcon(QIcon.fromTheme(u"go-down"))
+        icon4 = QIcon()
+        icon4.addFile(u":/w/down.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_down.setIcon(icon4)
-        self.btn_down.setIconSize(QSize(30, 30))
+        self.btn_down.setIconSize(QSize(26, 26))
+        self.btn_down.setFlat(True)
 
         self.horizontalLayout.addWidget(self.btn_down)
 
@@ -162,7 +176,7 @@ class Ui_Playlist(object):
         self.btn_add.setText("")
         self.lb_extra.setText("")
         self.btn_open.setText("")
-        self.btn_edit.setText("")
+        self.btn_save.setText("")
         self.btn_up.setText("")
         self.btn_down.setText("")
     # retranslateUi

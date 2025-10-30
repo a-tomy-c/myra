@@ -27,6 +27,8 @@ avance del proyecto
 - [x] abrir dialogo para guardar un archivo `.m3u`
 - cambie el modo de obtener data de la fila para guardar la playlist como .m3u (seguia con el anterior, ya lo actualize)
 - [x] save cambiar modo de obtener data de una fila **FIXED**
+- agregue iconos, incluyendo el logo del programa
+- [x] cambiar el icono y nombre de la variable de editar por guardar 
 
 
 ### UTIL
@@ -37,13 +39,6 @@ avance del proyecto
 - [ ] crear archivo `yml` con configuraciones
 - [ ] playlist: abrir y borrar anterior playlist
 - [ ] playlist: abrir y agregar a la anterior playlist
-
-al abrir un `m3u` playlist:
-- [ ] agregar y borrar
-- [ ] agregar adjuntar
-
-
-- [ ] cambiar el icono y nombre de la variable de editar por guardar 
 - [ ] orden y documentar metodos
 - [ ] crear archivo de configuracion, asi como los metodos
 - [ ] cargar estilos, por defecto

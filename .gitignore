@@ -8,3 +8,5 @@ tests/
 *.ui
 *.txt
 *.m3u
+*.svg
+*.qrc

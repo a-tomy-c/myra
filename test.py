@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout
 from PySide6.QtCore import Qt
 from ui.widget_playlist import WidgetPlaylist
+from ui.widget_player import WidgetPlayer
 
 
 class Ventana(QMainWindow):
@@ -14,6 +15,11 @@ class Ventana(QMainWindow):
         # PRUEBA PLAYLIST
         wplaylist = WidgetPlaylist()
         self.setCentralWidget(wplaylist)
+
+        # PRUEBA PLAYER
+        wplayer = WidgetPlayer()
+        self.setCentralWidget(wplayer)
+        ### tengo que heredar la clase, no agergarla como widget
 
 
 

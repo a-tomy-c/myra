@@ -32,9 +32,36 @@ avance del proyecto
 - cambie de 3 columnas a 2, quitando la columna icono que ya no era necesaria
 
 
+### PLAYER
+- ya agregue el cambio de icono a play y stop al player
+- implemente el core para reproducir url de radio
+- corregi agregar imagen al player al seleccinar un item y presioanar play (con doble click no habia problema)
+- agregue un `lb_info` en la parte superior derecha
+- cambie el ajuste de los labels (name y title)
+- agrugue la funcion de `next` y `previous`
+- al llegar al primero o al ultimo los botones de next y previous, muestran un mensaje en el label superior "NO NEXT", "NO PREVIOUS" respectivamente
+- [ ] el slider de volumen tiene un range de 1-100, creo que se puede extender a 200
+- [ ] ordenar y limpiar (todas estas funciones estan como en borrador)
+- al label de info le agregue un margen derecho de 4 para que no este muy apegado al borde, ademas que reduje la entrelinea
+- [ ] colocar imagen por defecto al agregar una nueva url
+- [ ] para editar un item (seria mas facil copiar la url con click derecho, crear uno nuevo y borrar el anterior) **revisar**
+- [ ] en caso de hacer lo de copiar la url se necesita agregar la funcion de copiar al url con click derecho
+- funciona reproducir: haciendo doble click o presionando play con item seleccionado
+- al slider de volumen le agregue un tooltip para mostrar el valor (solo funciona al hacer hover)
+- [ ] al tooltip del slider revisar si se puede mostrar mientras se mueve (realizar de ser posible)
+- quite lo de deshabilitar los botones de next y previous, porque al estar usando `flat` no se nota el cambio a `disabled`
+
+
+### MENUS
+- estan agregados los textos
+- [ ] falta enlazar a funciones
+- [ ] para about falta crear una dialogo o ventana con info del programa y mpv version
+
+
 ### UTIL
 - he creado el modulo `read_write` para crear archivos y leer archivos de configuracion, asi tambien para guardar la playlist
 - he creado un modulo para leer y escribir archivos `.m3u`
+
 
 ### To do
 - [ ] crear archivo `yml` con configuraciones
@@ -45,5 +72,5 @@ avance del proyecto
 - [ ] cargar estilos, por defecto
 - [ ] agreger metodo de recargar ui (playlist)
 - [ ] asignar size a la playlist
-- [ ] cambiando de 3 columnas a 2
+- [x] cambiando de 3 columnas a 2
 

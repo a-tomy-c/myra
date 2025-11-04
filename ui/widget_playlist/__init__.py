@@ -55,7 +55,7 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         self.btn_save.clicked.connect(self.playlist_save)
         self.btn_up.clicked.connect(self.element.move_up)
         self.btn_down.clicked.connect(self.element.move_down)
-        self.tw_playlist.cellDoubleClicked.connect(self.element._test_select)
+        # self.tw_playlist.cellDoubleClicked.connect(self.element._test_select)
         self.sld_size_icons.sliderReleased.connect(self.element._set_height)
         # self.btn_save.clicked.connect(self.element.delete)
         # self.btn_down.clicked.connect(self.element.clear)

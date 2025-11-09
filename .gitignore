@@ -4,7 +4,6 @@ tests/
 *.log
 *.txt
 *.jpg
-*.png
 *.ui
 *.txt
 *.svg

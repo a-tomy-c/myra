@@ -64,11 +64,11 @@ avance del proyecto
 - cambie el ajuste de los labels (name y title)
 - agrugue la funcion de `next` y `previous`
 - al llegar al primero o al ultimo los botones de next y previous, muestran un mensaje en el label superior "NO NEXT", "NO PREVIOUS" respectivamente
-- [ ] el slider de volumen tiene un range de 1-100, creo que se puede extender a 200
+- [x] el slider de volumen tiene un range de 1-100, creo que se puede extender a 200
 - [ ] ordenar y limpiar (todas estas funciones estan como en borrador)
 - al label de info le agregue un margen derecho de 4 para que no este muy apegado al borde, ademas que reduje la entrelinea
-- [ ] colocar imagen por defecto al agregar una nueva url
-- [ ] para editar un item (seria mas facil copiar la url con click derecho, crear uno nuevo y borrar el anterior) **revisar**
+- [x] colocar imagen por defecto al agregar una nueva url
+- [x] para editar un item (seria mas facil copiar la url con click derecho, crear uno nuevo y borrar el anterior) **revisar**
 - [ ] en caso de hacer lo de copiar la url se necesita agregar la funcion de copiar al url con click derecho
 - funciona reproducir: haciendo doble click o presionando play con item seleccionado
 - al slider de volumen le agregue un tooltip para mostrar el valor (solo funciona al hacer hover)
@@ -76,7 +76,7 @@ avance del proyecto
 - quite lo de deshabilitar los botones de next y previous, porque al estar usando `flat` no se nota el cambio a `disabled`
 - agregue shortcut de borrar elemento seleccionado de la playlist con `delete`
 - carga la imagen por defecto para el player si de la playlist elemento seleccionado no tiene imagen
-- [ ] usar retas relativas para la playlist
+- [x] usar rutas relativas para la playlist
 - cambie el limite del volumen a 200 (slider y mpv)
 
 
@@ -109,8 +109,8 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 
 ### To do
 - [ ] crear archivo `yml` con configuraciones
-- [ ] playlist: abrir y borrar anterior playlist
-- [ ] playlist: abrir y agregar a la anterior playlist
+- [x] playlist: abrir y borrar anterior playlist
+- [x] playlist: abrir y agregar a la anterior playlist
 - [ ] orden y documentar metodos
 - [ ] crear archivo de configuracion, asi como los metodos
 - [ ] cargar estilos, por defecto

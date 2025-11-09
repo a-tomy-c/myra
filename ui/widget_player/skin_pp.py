@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'skin_pp.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.9.3
+## Created by: Qt User Interface Compiler version 6.9.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -56,7 +56,7 @@ class Ui_MyraPlayer(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(4, 4, 4, 4)
         self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setSpacing(6)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.fm_top = QFrame(self.centralwidget)
         self.fm_top.setObjectName(u"fm_top")
@@ -175,7 +175,7 @@ class Ui_MyraPlayer(object):
         self.sld_volume.setObjectName(u"sld_volume")
         self.sld_volume.setMinimumSize(QSize(80, 0))
         self.sld_volume.setMaximumSize(QSize(120, 16777215))
-        self.sld_volume.setMaximum(100)
+        self.sld_volume.setMaximum(200)
         self.sld_volume.setOrientation(Qt.Orientation.Horizontal)
 
         self.horizontalLayout_3.addWidget(self.sld_volume)

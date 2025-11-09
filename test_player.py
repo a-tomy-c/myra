@@ -18,11 +18,12 @@ class MiVentana(WidgetPlayer):
     #     self.setWindowTitle(f'{gm.width()}x{gm.height()}')
 
     def _cnf_MiVentana(self):
-        self.resize(430, 350)
+        self.resize(430, 550)
         # vly = QVBoxLayout(self)
         # vly.addWidget()
         self.wplaylist = WidgetPlaylist()
         self.vly_widget.addWidget(self.wplaylist)
+        # self.vly_widget.setContentsMargins(0, 6, 0, 0) # linea 203 wplayer
         self.wplaylist.tw_playlist.cellDoubleClicked.connect(self.select)
         self.btn_playlist.clicked.connect(self.toggle_playlist)
         pol = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Ignored)
@@ -38,6 +39,9 @@ class MiVentana(WidgetPlayer):
 
         self._menu_actions()
         self._enable_shortcuts()
+        # fo = self.lb_title.font()
+        # fo.setPointSize(12)
+        # self.lb_title.setFont(fo)
 
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)
@@ -89,15 +93,20 @@ class MiVentana(WidgetPlayer):
         if current > 0:
             self.wplaylist.tw_playlist.setCurrentCell(current-1, 1)
             self.select(current-1, 1)
-            # self.btn_previous.setEnabled(True)
-            # self.btn_next.setEnabled(True)
         else:
-        #     self.btn_previous.setEnabled(False)
-        # if not self.btn_previous.isEnabled():
             self.lb_info.setText('NO PREVIOUS')
 
     def _menu_actions(self):
         self.actionNew_Url.triggered.connect(self.wplaylist.dialog_add_url)
+        self.actionQuit.triggered.connect(self.close)
+        self.actionOpen.triggered.connect(self.wplaylist.playlist_open)
+        self.actionAppend.triggered.connect(self.wplaylist.playlist_append)
+        self.actionSave.triggered.connect(self.wplaylist.playlist_save)
+        self.actionclear.triggered.connect(self.wplaylist.element.clear)
+        self.actionReload_Title.triggered.connect(self.set_metadata)
+        self.actiontoggle_playlist.triggered.connect(self.toggle_playlist)
+
+
 
     def _enable_shortcuts(self):
         d = {

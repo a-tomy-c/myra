@@ -1,0 +1,40 @@
+#EXTM3U
+#EXTINF:0,Allzic
+#EXTIMG:covers/c4.jpg
+https://allzic47.ice.infomaniak.ch/allzic47.mp3
+#EXTINF:0,Piano Landscapes
+#EXTIMG:covers/p01.jpg
+https://playerservices.streamtheworld.com/api/livestream-redirect/ACIR23_S01.mp3
+#EXTINF:0,Klassik Radio
+#EXTIMG:covers/c1.jpg
+https://stream.klassikradio.de/piano/mp3-192
+#EXTINF:0,Soma Deep-space
+#EXTIMG:covers/a9.jpg
+https://ice5.somafm.com/deepspaceone-32-aac
+#EXTINF:0,Mariscal Rock
+#EXTIMG:covers/a1.jpg
+https://media.profesionalhosting.com:8047/stream
+#EXTINF:0,Nerds and Geeks
+#EXTIMG:covers/o5.jpg
+http://nerdsandgeeks.de:2808/stream/2/;
+#EXTINF:0,Rainwave-Chiptunes
+#EXTIMG:covers/a2.jpg
+http://relay.rainwave.cc/chiptune.mp3
+#EXTINF:0,Just Rock UK
+#EXTIMG:covers/abs-5.jpg
+https://antares.dribbcast.com/proxy/s8170/stream
+#EXTINF:0,Asgard-Radio
+#EXTIMG:covers/sk0.jpg
+http://cast6.my-control-panel.com:7882/stream
+#EXTINF:0,Dark-Radio BR
+#EXTIMG:covers/r2.jpg
+https://servidor32.brlogic.com:8130/live
+#EXTINF:0,Radio Anime 24 PL
+#EXTIMG:covers/an8.jpg
+http://mp3.radioslupsk.pl:7028/stream/;
+#EXTINF:0,Radio Alfa Anime
+#EXTIMG:covers/an10.jpg
+https://nrf1.newradio.it:10328/alfaanime
+#EXTINF:0,La Grosse Radio
+#EXTIMG:covers/i01.jpg
+https://hd.lagrosseradio.info/lagrosseradio-metal-024.mp3

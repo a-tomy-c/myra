@@ -6,6 +6,7 @@ from PySide6.QtGui import QPixmap, QImage, QIcon, QFont
 from PySide6.QtCore import QSize, Qt
 from ui.widget_player.skin_pp import Ui_MyraPlayer
 from core_myra import CoreMyra, get_rounded_cover
+from pathlib import Path
 
 
 class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
@@ -28,8 +29,11 @@ class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
 
     def set_cover(self, image:str, size:int=80):
         """asigna cover al player"""
-        pix = QPixmap(QImage(image).scaledToWidth(size))
-        self.lb_cover.setPixmap(get_rounded_cover(pix, 24))
+        if not Path(image).exists():
+            image = 'covers/default.jpg'
+        if Path(image).exists():
+            pix = QPixmap(QImage(image).scaledToWidth(size))
+            self.lb_cover.setPixmap(get_rounded_cover(pix, 24))
 
     def set_url(self, url:str):
         """asigna una url"""

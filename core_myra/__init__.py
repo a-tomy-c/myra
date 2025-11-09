@@ -32,7 +32,7 @@ class CoreMyra():
         self._cnf_CoreMyra()
 
     def _cnf_CoreMyra(self):
-        self.player = mpv.MPV(video=False, ytdl=False)
+        self.player = mpv.MPV(video=False, ytdl=False, volume_max=200)
         self.IS_PLAYING = False
         self.url = None
         self.timer = QTimer()

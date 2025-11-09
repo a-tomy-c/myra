@@ -1,11 +1,16 @@
 # myra
 
+audio player, reproduce url (radios) abre y guardas playlist en archivos formato `.m3u`
+
+![](capture.png)
+
+
 ## Librerias
 radio player echo con:
 * PySide6            6.9.3
 * PyYAML             6.0.3
 
-
+pyyaml aun no es necesario (luego lo usare para guardar y leer configuraciones) porque aun no tiene archivo de configuraciones
 
 # NOTAS
 
@@ -45,6 +50,10 @@ avance del proyecto
     - en lugar de seleccionar se puede usar arrastrar la imagen sobre la ventana del dialogo d agregar url
     - ahora carga una imagen por defecto, para agregar una nueva url
 - agregue menu con click derecho de copiar la url del item seleccionado
+- agregue la carpeta con los covers (imagenes que seleccione para agregar urls)
+- agregue la playlist de pruebas al repo
+- si la imagen es una subcarpeta dentro del programa, al momento de guardar la imagen lo guarda como ruta relativa
+
 
 
 ### PLAYER
@@ -68,9 +77,13 @@ avance del proyecto
 - agregue shortcut de borrar elemento seleccionado de la playlist con `delete`
 - carga la imagen por defecto para el player si de la playlist elemento seleccionado no tiene imagen
 - [ ] usar retas relativas para la playlist
+- cambie el limite del volumen a 200 (slider y mpv)
 
 
 ### MENUS
+
+los items que no estan aqui o no estan marcados aun no hacen nada (no los he enlazado o falta agregar/crear el metodo)
+
 - estan agregados los textos
 - [ ] falta enlazar a funciones
     -[x] file

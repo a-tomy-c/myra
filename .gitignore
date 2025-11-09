@@ -7,7 +7,6 @@ tests/
 *.png
 *.ui
 *.txt
-*.m3u
 *.svg
 *.qrc
 extras/

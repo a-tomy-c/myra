@@ -69,7 +69,7 @@ avance del proyecto
 - al label de info le agregue un margen derecho de 4 para que no este muy apegado al borde, ademas que reduje la entrelinea
 - [x] colocar imagen por defecto al agregar una nueva url
 - [x] para editar un item (seria mas facil copiar la url con click derecho, crear uno nuevo y borrar el anterior) **revisar**
-- [ ] en caso de hacer lo de copiar la url se necesita agregar la funcion de copiar al url con click derecho
+- [x] en caso de hacer lo de copiar la url se necesita agregar la funcion de copiar al url con click derecho
 - funciona reproducir: haciendo doble click o presionando play con item seleccionado
 - al slider de volumen le agregue un tooltip para mostrar el valor (solo funciona al hacer hover)
 - [ ] al tooltip del slider revisar si se puede mostrar mientras se mueve (realizar de ser posible)
@@ -86,7 +86,7 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 
 - estan agregados los textos
 - [ ] falta enlazar a funciones
-    -[x] file
+    - [x] file
         - [x] abrir url
         - [x] quit
     - [x] playlist

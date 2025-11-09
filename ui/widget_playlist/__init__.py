@@ -7,6 +7,7 @@ from PySide6.QtCore import QSize, Qt
 from ui.widget_playlist.skin_playlist import Ui_Playlist
 from ui.widget_modal import WidgetModal
 from core_myra.file_m3u import FileM3u
+from pathlib import Path
 
 
 class MyItem(QTableWidgetItem):
@@ -55,10 +56,11 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         self.btn_save.clicked.connect(self.playlist_save)
         self.btn_up.clicked.connect(self.element.move_up)
         self.btn_down.clicked.connect(self.element.move_down)
-        self.tw_playlist.cellDoubleClicked.connect(self.element._test_select)
+        # self.tw_playlist.cellDoubleClicked.connect(self.element._test_select)
         self.sld_size_icons.sliderReleased.connect(self.element._set_height)
         # self.btn_save.clicked.connect(self.element.delete)
         # self.btn_down.clicked.connect(self.element.clear)
+        self.set_image_default_new_url()
 
     def set_save_dir(self, path:str='.'):
         """asigna la ruta donde se guardan las playlist por defecto"""
@@ -67,6 +69,8 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
     def dialog_add_url(self):
         """agrega una nueva url"""
         dialog = WidgetModal(self)
+        if Path(self.IMAGE).exists():
+            dialog.set_image(self.IMAGE)
         if dialog.exec() == QDialog.DialogCode.Accepted:
             title, url, image = dialog.get_data()
             if url:
@@ -112,6 +116,10 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         """selecciona un archivo .m3u y carga"""
         self.tw_playlist.setRowCount(0)
         self.playlist_append()
+
+    def set_image_default_new_url(self, image='covers/default.jpg'):
+        self.IMAGE = image
+
 
 
 class Element():
@@ -202,3 +210,5 @@ class Element():
     
     def _test_select(self, index:int, col:int=None):
         print(self.select(index, col))
+
+    

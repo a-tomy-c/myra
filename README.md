@@ -64,6 +64,7 @@ avance del proyecto
 - al slider de volumen le agregue un tooltip para mostrar el valor (solo funciona al hacer hover)
 - [ ] al tooltip del slider revisar si se puede mostrar mientras se mueve (realizar de ser posible)
 - quite lo de deshabilitar los botones de next y previous, porque al estar usando `flat` no se nota el cambio a `disabled`
+- agregue shortcut de borrar elemento seleccionado de la playlist con `delete`
 
 
 ### MENUS

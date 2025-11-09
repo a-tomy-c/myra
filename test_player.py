@@ -3,6 +3,7 @@ from PySide6.QtWidgets import (
     QPushButton, QLineEdit, QLabel, QSlider, QMainWindow
 )
 from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QShortcut, QKeySequence
 from ui.widget_player import WidgetPlayer
 from ui.widget_playlist import WidgetPlaylist
 
@@ -36,6 +37,7 @@ class MiVentana(WidgetPlayer):
         self.btn_previous.clicked.connect(self.previous)
 
         self._menu_actions()
+        self._enable_shortcuts()
 
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)
@@ -96,6 +98,14 @@ class MiVentana(WidgetPlayer):
 
     def _menu_actions(self):
         self.actionNew_Url.triggered.connect(self.wplaylist.dialog_add_url)
+
+    def _enable_shortcuts(self):
+        d = {
+            Qt.Key_Delete:self.wplaylist.element.delete
+        }
+        for k, v in d.items():
+            QShortcut(QKeySequence(k), self, v, context=Qt.ApplicationShortcut)
+    
 
     
 

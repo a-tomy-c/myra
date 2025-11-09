@@ -35,6 +35,8 @@ class MiVentana(WidgetPlayer):
         self.lb_name.setWordWrap(True)
         self.btn_previous.clicked.connect(self.previous)
 
+        self._menu_actions()
+
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)
         self.set_url(data.get('url'))
@@ -91,6 +93,9 @@ class MiVentana(WidgetPlayer):
         #     self.btn_previous.setEnabled(False)
         # if not self.btn_previous.isEnabled():
             self.lb_info.setText('NO PREVIOUS')
+
+    def _menu_actions(self):
+        self.actionNew_Url.triggered.connect(self.wplaylist.dialog_add_url)
 
     
 

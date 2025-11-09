@@ -1,5 +1,5 @@
-from PySide6.QtWidgets import QDialog, QWidget, QFileDialog, QLabel
-from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QDialog, QWidget, QFileDialog, QLabel, QApplication
+from PySide6.QtGui import QPixmap, QClipboard, QIcon
 from PySide6.QtCore import Qt, QSize
 from ui.widget_modal.skin_dialog_add_url import Ui_Dialog
 from pathlib import Path
@@ -12,7 +12,7 @@ class Viewer(QLabel):
 
     def _cnf_Viewer(self):
         self.IMAGE = None
-        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setAlignment(Qt.AlignmentFlag.AlignTop)
 
     def get_image(self) -> str:
         """retorna la ruta de la image"""
@@ -50,10 +50,22 @@ class WidgetModal(QDialog, Ui_Dialog):
         self.setWindowTitle('Agrega una nueva Url')
         self.viewer = Viewer()
         self.btn_load_image.clicked.connect(self.select_image)
+        self.btn_paste.clicked.connect(self.paste_clipboard)
+        self.setAcceptDrops(True)
+        self.le_name.setAcceptDrops(False)
+        self.le_url.setAcceptDrops(False)
+
+        pixmap = QPixmap(u":/w/paste.svg").scaled(
+                    QSize(22, 22),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                )
+        self.btn_paste.setIcon(QIcon(pixmap))
 
     def select_image(self):
         """dialogo para seleccionar una imagen"""
-        self.image_path, _ = QFileDialog.getOpenFileName(
+        dialog = QFileDialog()
+        self.image_path, _ = dialog.getOpenFileName(
             self, "Seleciona una Imagen", "",
             "Imagenes (*.jpg *.png *.jpeg)"
         )
@@ -85,4 +97,45 @@ class WidgetModal(QDialog, Ui_Dialog):
         """retorna un objeto Viewer (QLabel con imagen)"""
         self.viewer.resize_image(size=size)
         return self.viewer
+    
+    def _is_image(self, file:str) -> bool:
+        suffixes = ('.png', '.jpg', '.jpeg', '.bmp', '.gif', '.webp')
+        return Path(file).is_file() and file.lower().endswith(suffixes)
+    
+    def dragEnterEvent(self, event):
+        """Se ejecuta cuando se arrastra algo sobre el diálogo"""
+        if event.mimeData().hasUrls():
+            # Verificar si al menos un archivo es una imagen
+            for url in event.mimeData().urls():
+                path = url.toLocalFile()
+                if self._is_image(path):
+                    event.acceptProposedAction()
+                    return
 
+    def dropEvent(self, event):
+        """Se ejecuta cuando se suelta un archivo en el diálogo"""
+        for url in event.mimeData().urls():
+            path_image = url.toLocalFile()
+            if self._is_image(path_image):
+                self.set_image(path_image)
+            #     self.viewer.set_image(path_image)
+            #     pix_scaled:QPixmap = self.viewer.get_pixmap()
+            #     if not pix_scaled.isNull():
+            #         self.lb_viewer.setPixmap(pix_scaled)
+
+                event.acceptProposedAction()
+                break
+
+    def paste_clipboard(self):
+        """pega la url que este en el portapapeles"""
+        clipboard: QClipboard = QApplication.clipboard()
+        self.le_url.setText(clipboard.text())
+
+    def set_image(self, filename:str):
+        """asigna la imagen al agregar una nueva url"""
+        if self._is_image(filename):
+            self.viewer.set_image(filename)
+            pix_scaled:QPixmap = self.viewer.get_pixmap()
+            if not pix_scaled.isNull():
+                self.lb_viewer.setPixmap(pix_scaled)
+    

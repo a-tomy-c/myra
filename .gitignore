@@ -10,3 +10,4 @@ tests/
 *.m3u
 *.svg
 *.qrc
+extras/

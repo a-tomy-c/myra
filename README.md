@@ -44,6 +44,7 @@ avance del proyecto
     - la imagen ahora es de 150x150
     - en lugar de seleccionar se puede usar arrastrar la imagen sobre la ventana del dialogo d agregar url
     - ahora carga una imagen por defecto, para agregar una nueva url
+- agregue menu con click derecho de copiar la url del item seleccionado
 
 
 ### PLAYER
@@ -66,13 +67,26 @@ avance del proyecto
 - quite lo de deshabilitar los botones de next y previous, porque al estar usando `flat` no se nota el cambio a `disabled`
 - agregue shortcut de borrar elemento seleccionado de la playlist con `delete`
 - carga la imagen por defecto para el player si de la playlist elemento seleccionado no tiene imagen
+- [ ] usar retas relativas para la playlist
 
 
 ### MENUS
 - estan agregados los textos
 - [ ] falta enlazar a funciones
-    - [x] abrir url
-- [ ] para about falta crear una dialogo o ventana con info del programa y mpv version
+    -[x] file
+        - [x] abrir url
+        - [x] quit
+    - [x] playlist
+        - [x] open 
+        - [x] save 
+        - [x] append
+        - [x]  clear
+    - [ ] tools
+        - [x] reload title
+        - [x] toggle playlist
+        - [x] ...
+    - [ ] about
+        - [ ] para about falta crear una dialogo o ventana con info del programa y mpv version
 
 
 ### UTIL

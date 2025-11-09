@@ -1,9 +1,9 @@
 from PySide6.QtWidgets import (
     QWidget, QTableWidgetItem, QHeaderView, QTableWidget,
-    QDialog, QFileDialog, QMessageBox
+    QDialog, QFileDialog, QMessageBox, QMenu, QApplication
 )
-from PySide6.QtGui import QPixmap, QImage, QIcon
-from PySide6.QtCore import QSize, Qt
+from PySide6.QtGui import QPixmap, QImage, QIcon, QClipboard
+from PySide6.QtCore import QSize, Qt, QPoint
 from ui.widget_playlist.skin_playlist import Ui_Playlist
 from ui.widget_modal import WidgetModal
 from core_myra.file_m3u import FileM3u
@@ -61,6 +61,8 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         # self.btn_save.clicked.connect(self.element.delete)
         # self.btn_down.clicked.connect(self.element.clear)
         self.set_image_default_new_url()
+        self.tw_playlist.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.tw_playlist.customContextMenuRequested.connect(self.show_menu)
 
     def set_save_dir(self, path:str='.'):
         """asigna la ruta donde se guardan las playlist por defecto"""
@@ -120,6 +122,22 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
     def set_image_default_new_url(self, image='covers/default.jpg'):
         self.IMAGE = image
 
+    def show_menu(self, position:QPoint):
+        """muestra menu para copiar la url del item seleccionado"""
+        item = self.tw_playlist.itemAt(position)
+        menu = QMenu(self.tw_playlist)
+        if item:
+            action_copy = menu.addAction("Copy Url")
+            action_copy.triggered.connect(lambda:self.copy_url(item))
+
+        global_position = self.tw_playlist.mapToGlobal(position)
+        menu.exec(global_position)
+
+    def copy_url(self, item:QTableWidgetItem):
+        """copia la url del item seleccionado"""
+        data = item.data(Qt.ItemDataRole.UserRole)
+        clipboard:QClipboard = QApplication.clipboard()
+        clipboard.setText(data.get('url', ''))
 
 
 class Element():
@@ -211,4 +229,7 @@ class Element():
     def _test_select(self, index:int, col:int=None):
         print(self.select(index, col))
 
+    
+
+    
     

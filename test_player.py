@@ -23,6 +23,7 @@ class MiVentana(WidgetPlayer):
         # vly.addWidget()
         self.wplaylist = WidgetPlaylist()
         self.vly_widget.addWidget(self.wplaylist)
+        self.vly_widget.setContentsMargins(0, 6, 0, 0) # linea 203 wplayer
         self.wplaylist.tw_playlist.cellDoubleClicked.connect(self.select)
         self.btn_playlist.clicked.connect(self.toggle_playlist)
         pol = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Ignored)
@@ -38,6 +39,9 @@ class MiVentana(WidgetPlayer):
 
         self._menu_actions()
         self._enable_shortcuts()
+        fo = self.lb_title.font()
+        fo.setPointSize(12)
+        self.lb_title.setFont(fo)
 
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)
@@ -98,6 +102,15 @@ class MiVentana(WidgetPlayer):
 
     def _menu_actions(self):
         self.actionNew_Url.triggered.connect(self.wplaylist.dialog_add_url)
+        self.actionQuit.triggered.connect(self.close)
+        self.actionOpen.triggered.connect(self.wplaylist.playlist_open)
+        self.actionAppend.triggered.connect(self.wplaylist.playlist_append)
+        self.actionSave.triggered.connect(self.wplaylist.playlist_save)
+        self.actionclear.triggered.connect(self.wplaylist.element.clear)
+        self.actionReload_Title.triggered.connect(self.set_metadata)
+        self.actiontoggle_playlist.triggered.connect(self.toggle_playlist)
+
+
 
     def _enable_shortcuts(self):
         d = {

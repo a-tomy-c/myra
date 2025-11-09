@@ -134,8 +134,15 @@ class WidgetModal(QDialog, Ui_Dialog):
     def set_image(self, filename:str):
         """asigna la imagen al agregar una nueva url"""
         if self._is_image(filename):
+            filename = self.to_relative(filename)
             self.viewer.set_image(filename)
             pix_scaled:QPixmap = self.viewer.get_pixmap()
             if not pix_scaled.isNull():
                 self.lb_viewer.setPixmap(pix_scaled)
     
+    def to_relative(self, filename:str) -> str:
+        """revisa si la ruta puede ser relativa"""
+        base = Path().cwd()
+        if filename.startswith(base.as_posix()):
+            filename = Path(filename).relative_to(base)
+        return filename

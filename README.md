@@ -102,9 +102,13 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
         - [ ] para about falta crear una dialogo o ventana con info del programa y mpv version
 
 
-### UTIL
+### UTIL Y OTROS
 - he creado el modulo `read_write` para crear archivos y leer archivos de configuracion, asi tambien para guardar la playlist
 - he creado un modulo para leer y escribir archivos `.m3u`
+- agregue mpv.py
+- agregue theme.qss
+- agregue el dir covers/
+
 
 
 ### To do
@@ -117,4 +121,8 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 - [ ] agreger metodo de recargar ui (playlist)
 - [ ] asignar size a la playlist
 - [x] cambiando de 3 columnas a 2
+- [ ] quitar el espaciado del layout para el player y la playlist y colocar un margen inferior al player
+- [ ] cargar mas temas
+- [ ] cargar configuracion por default
+
 

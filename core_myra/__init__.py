@@ -1,7 +1,7 @@
 import os
 import locale
 os.environ['LC_NUMERIC'] = 'C'
-import mpv
+import core_myra.mpv as mpv
 from PySide6.QtGui import QPixmap, QPainter, QPainterPath, Qt
 from PySide6.QtCore import QTimer
 try:

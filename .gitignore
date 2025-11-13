@@ -3,7 +3,6 @@ adicional/
 tests/
 *.log
 *.txt
-*.jpg
 *.ui
 *.txt
 *.svg

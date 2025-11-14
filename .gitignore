@@ -7,4 +7,5 @@ tests/
 *.txt
 *.svg
 *.qrc
+*.dll
 extras/

@@ -39,9 +39,9 @@ class MiVentana(WidgetPlayer):
 
         self._menu_actions()
         self._enable_shortcuts()
-        # fo = self.lb_title.font()
-        # fo.setPointSize(12)
-        # self.lb_title.setFont(fo)
+        fo = self.lb_title.font()
+        fo.setPointSize(11)
+        self.lb_title.setFont(fo)
 
         self.load_theme()
         self.wplaylist.open_m3u(filename_m3u='test_playlist.m3u')

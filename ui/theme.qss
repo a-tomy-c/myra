@@ -63,8 +63,17 @@ QSlider::handle:horizontal {
     width: 10px;
     height: 16px;
     margin: -6px;
-    border-raidus: 6px;
+    border-radius: 6px;
 }
 QSlider::handle:horizontal:pressed {
     background: #505050;
+}
+QLineEdit {
+    background: #252525;
+    border: 1px solid #505050;
+}
+QLabel#lb_cover {
+    background: #181818;
+    border: 1px solid #252525;
+    border-radius: 24px;
 }

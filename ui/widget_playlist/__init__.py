@@ -63,6 +63,8 @@ class WidgetPlaylist(QWidget, Ui_Playlist):
         self.set_image_default_new_url()
         self.tw_playlist.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.tw_playlist.customContextMenuRequested.connect(self.show_menu)
+        vh = self.tw_playlist.verticalHeader()
+        vh.setFixedWidth(12)
 
     def set_save_dir(self, path:str='.'):
         """asigna la ruta donde se guardan las playlist por defecto"""

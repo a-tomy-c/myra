@@ -78,6 +78,9 @@ avance del proyecto
 - carga la imagen por defecto para el player si de la playlist elemento seleccionado no tiene imagen
 - [x] usar rutas relativas para la playlist
 - cambie el limite del volumen a 200 (slider y mpv)
+- le quite el `spacing` entre widgets (player y playlist) y agregue margen bot al player, para que no se muevan los icono al hacer toggle la playlist
+- cambie el estilo del slider
+- agregue el icono al programa
 
 
 ### MENUS
@@ -117,11 +120,11 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 - [x] playlist: abrir y agregar a la anterior playlist
 - [ ] orden y documentar metodos
 - [ ] crear archivo de configuracion, asi como los metodos
-- [ ] cargar estilos, por defecto
+- [x] cargar estilos, por defecto
 - [ ] agreger metodo de recargar ui (playlist)
 - [ ] asignar size a la playlist
 - [x] cambiando de 3 columnas a 2
-- [ ] quitar el espaciado del layout para el player y la playlist y colocar un margen inferior al player
+- [x] quitar el espaciado del layout para el player y la playlist y colocar un margen inferior al player
 - [ ] cargar mas temas
 - [ ] cargar configuracion por default
 

@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QPushButton, QLineEdit, QLabel, QSlider, QMainWindow
 )
 from PySide6.QtCore import Qt, QSize
-from PySide6.QtGui import QShortcut, QKeySequence
+from PySide6.QtGui import QShortcut, QKeySequence, QIcon, QGuiApplication
 from ui.widget_player import WidgetPlayer
 from ui.widget_playlist import WidgetPlaylist
 
@@ -39,12 +39,13 @@ class MiVentana(WidgetPlayer):
 
         self._menu_actions()
         self._enable_shortcuts()
-        fo = self.lb_title.font()
-        fo.setPointSize(11)
-        self.lb_title.setFont(fo)
+        # fo = self.lb_title.font()
+        # fo.setPointSize(11)
+        # self.lb_title.setFont(fo)
 
         self.load_theme()
         self.wplaylist.open_m3u(filename_m3u='test_playlist.m3u')
+        self.msg_initial()
 
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)
@@ -128,7 +129,12 @@ class MiVentana(WidgetPlayer):
                 app.setStyleSheet(style)
 
     def msg_initial(self):
-        ...
+        self.lb_name.setText("MY RADIO PLAYER")
+        self.lb_title.setText("...")
+
+        icon = QIcon(u":/w/orange.svg")
+        # self.setWindowIcon(icon)
+        QGuiApplication.instance().setWindowIcon(icon)
     
 
 if __name__ == '__main__':

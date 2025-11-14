@@ -41,16 +41,14 @@ QMenuBar::item:selected {
     color: #C6AE82;
 }
 QScrollBar:vertical {
-    border: 1px solid #252525;
     background: #252525;
+    border: 1px solid #252525;
     width: 12px;
-    margin: 2px 0;
-    border-radius: 5px;
+    margin: 0;
 }
 QScrollBar::handle:vertical {
     background: #0F0C07;
     min-height: 20px;
-    border-radius: 3px;
 }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     border: none;
@@ -58,15 +56,29 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     subcontrol-position: none;
 }
 QSlider::handle:horizontal {
-    background: #252525;
-    border: 1px solid #101010;
-    width: 10px;
+    background: #0F0C07;
+    border: 1px solid #C6AE82;
+    width: 16px;
     height: 16px;
-    margin: -6px;
-    border-radius: 6px;
+    margin: -3px 0;
+    border-radius: 1px;
 }
 QSlider::handle:horizontal:pressed {
-    background: #505050;
+    background: #101010;
+}
+QSlider::sub-page:horizontal {
+    background: #C6AE82;
+    border-radius: 4px;
+}
+QSlider::add-page:horizontal {
+    border: 1px solid #C6AE82;
+    border-radius: 4px;
+}
+QSlider::groove:horizontal {
+    background: #0F0C07;
+    height: 8px;
+    border-radius: 10px;
+    margin: 0;
 }
 QLineEdit {
     background: #252525;
@@ -76,4 +88,11 @@ QLabel#lb_cover {
     background: #181818;
     border: 1px solid #252525;
     border-radius: 24px;
+}
+QToolTip {
+    font-size:18px;
+    color: black;
+    border: #252525;
+    background: #C6AE82;
+    margin: 1px 2px;
 }

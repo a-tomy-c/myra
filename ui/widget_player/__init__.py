@@ -19,7 +19,7 @@ class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
         self.core = CoreMyra()
         self.SHOW_PLAYLIST = True
         self.lb_info = QLabel(parent=self, text="")
-        self.lb_info.setMinimumWidth(80)
+        self.lb_info.setMinimumWidth(120)
         self.lb_info.setWordWrap(True)
         # self.lb_info.setMaximumWidth(80)
         self.lb_info.setAlignment(Qt.AlignmentFlag.AlignRight)
@@ -74,7 +74,10 @@ class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
     def set_metadata(self):
         """asigna info al ui sobre el metadata"""
         metadata:dict = self.core.get_metadata()
-        self.lb_title.setText(metadata.get('mtitle', ''))
+        # self.lb_title.setText(metadata.get('mtitle', ''))
         self.lb_name.setText(metadata.get('iname', ''))
         codec = metadata.get('codec', '')
         self.lb_info.setText(f'<p style="line-height:80%;">{codec}</p>')
+        title = metadata.get('mtitle', '')
+        self.lb_title.setText(f'<p style="line-height:80%;">{title}</p>')
+        self.lb_title.setToolTip(title)

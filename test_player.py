@@ -3,8 +3,8 @@ from PySide6.QtWidgets import (
     QPushButton, QLineEdit, QLabel, QSlider, QMainWindow
 )
 from PySide6.QtCore import Qt, QSize
-from PySide6.QtGui import QShortcut, QKeySequence
-from ui.widget_player import WidgetPlayer
+from PySide6.QtGui import QShortcut, QKeySequence, QIcon, QGuiApplication, QPixmap, QImage
+from ui.widget_player import WidgetPlayer, get_rounded_cover
 from ui.widget_playlist import WidgetPlaylist
 
 
@@ -40,8 +40,12 @@ class MiVentana(WidgetPlayer):
         self._menu_actions()
         self._enable_shortcuts()
         # fo = self.lb_title.font()
-        # fo.setPointSize(12)
+        # fo.setPointSize(11)
         # self.lb_title.setFont(fo)
+
+        self.load_theme()
+        self.msg_initial()
+        # self.wplaylist.open_m3u(filename_m3u='test_playlist.m3u')
 
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)
@@ -69,7 +73,7 @@ class MiVentana(WidgetPlayer):
         self.SHOW_PLAYLIST = not self.SHOW_PLAYLIST
         if self.SHOW_PLAYLIST:
             self.widget.show()
-            self.resize(430, 350)
+            self.resize(430, 550)
         else:
             self.widget.hide()
             self.resize(430, 100)
@@ -107,20 +111,37 @@ class MiVentana(WidgetPlayer):
         self.actiontoggle_playlist.triggered.connect(self.toggle_playlist)
 
 
-
     def _enable_shortcuts(self):
         d = {
             Qt.Key_Delete:self.wplaylist.element.delete
         }
         for k, v in d.items():
             QShortcut(QKeySequence(k), self, v, context=Qt.ApplicationShortcut)
-    
 
+
+    def load_theme(self):
+        """carga los estilos del tema por default"""
+        filepath = 'ui/theme.qss'
+        with open(filepath, 'r', encoding='utf-8') as file:
+            style = file.read()
+            app = QApplication.instance()
+            if app:
+                app.setStyleSheet(style)
+
+    def msg_initial(self):
+        self.lb_name.setText("MY RADIO PLAYER")
+        self.lb_title.setText("...")
+
+        icon = QIcon(u":/w/orange.svg")
+        # self.setWindowIcon(icon)
+        QGuiApplication.instance().setWindowIcon(icon)
     
 
 if __name__ == '__main__':
+    print("ejecucion")
     import sys
     app = QApplication(sys.argv)
+    app.setStyle('Fusion')
     mv = MiVentana()
     mv.show()
     sys.exit(app.exec())

@@ -1,0 +1,101 @@
+* {
+    background-color: #0F0C07;
+    color: #9e9588;
+}
+QPushButton {
+    background-color: #101010;
+}
+QHeaderView::section{
+    background-color: #181818;
+    padding: 0;
+    border: 0;
+}
+QHeaderView {
+    background-color: #181818;
+}
+QHeaderView::section:selected {
+    color: #F9F4EE;
+}
+QTableCornerButton::section {
+    background-color: #181818;
+    border: none;
+}
+QTableWidget {
+    background-color: #181818;
+}
+QTableWidget::item:selected {
+    background-color: #0F0C07;
+    color: #C6AE82;
+}
+QTableWidget::item:focus {
+    /*outline: none !important; */
+    border: none;
+}
+QMenu {
+    background-color: #181818;
+    border: 2px solid #181818;
+}
+QMenu::item:selected {
+    background-color: #0F0C07;
+    color: #C6AE82;
+}
+QMenuBar::item:selected {
+    background-color: #000000;
+    color: #C6AE82;
+}
+QScrollBar:vertical {
+    background: #252525;
+    border: 1px solid #252525;
+    width: 12px;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background: #0F0C07;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    height: 0;
+    subcontrol-position: none;
+}
+QSlider::handle:horizontal {
+    background: #0F0C07;
+    border: 1px solid #C6AE82;
+    width: 16px;
+    height: 16px;
+    margin: -3px 0;
+    border-radius: 1px;
+}
+QSlider::handle:horizontal:pressed {
+    background: #101010;
+}
+QSlider::sub-page:horizontal {
+    background: #C6AE82;
+    border-radius: 4px;
+}
+QSlider::add-page:horizontal {
+    border: 1px solid #C6AE82;
+    border-radius: 4px;
+}
+QSlider::groove:horizontal {
+    background: #0F0C07;
+    height: 8px;
+    border-radius: 10px;
+    margin: 0;
+}
+QLineEdit {
+    background: #252525;
+    border: 1px solid #505050;
+}
+QLabel#lb_cover {
+    background: #181818;
+    border: 1px solid #252525;
+    border-radius: 24px;
+}
+QToolTip {
+    font-size:18px;
+    color: black;
+    border: #252525;
+    background: #C6AE82;
+    margin: 1px 2px;
+}

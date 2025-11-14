@@ -10,6 +10,9 @@ QHeaderView::section{
     padding: 0;
     border: 0;
 }
+QHeaderView {
+    background-color: #181818;
+}
 QHeaderView::section:selected {
     color: #F9F4EE;
 }

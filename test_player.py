@@ -3,8 +3,8 @@ from PySide6.QtWidgets import (
     QPushButton, QLineEdit, QLabel, QSlider, QMainWindow
 )
 from PySide6.QtCore import Qt, QSize
-from PySide6.QtGui import QShortcut, QKeySequence, QIcon, QGuiApplication
-from ui.widget_player import WidgetPlayer
+from PySide6.QtGui import QShortcut, QKeySequence, QIcon, QGuiApplication, QPixmap, QImage
+from ui.widget_player import WidgetPlayer, get_rounded_cover
 from ui.widget_playlist import WidgetPlaylist
 
 
@@ -44,8 +44,8 @@ class MiVentana(WidgetPlayer):
         # self.lb_title.setFont(fo)
 
         self.load_theme()
-        self.wplaylist.open_m3u(filename_m3u='test_playlist.m3u')
         self.msg_initial()
+        # self.wplaylist.open_m3u(filename_m3u='test_playlist.m3u')
 
     def select(self, row:int, col:int):
         data = self.wplaylist.element.select(row, col)

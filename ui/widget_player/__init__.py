@@ -19,7 +19,9 @@ class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
         self.core = CoreMyra()
         self.SHOW_PLAYLIST = True
         self.lb_info = QLabel(parent=self, text="")
-        self.lb_info.setMinimumWidth(120)
+        self.lb_info.setMinimumWidth(150)
+        self.lb_info.setMaximumHeight(24)
+        # self.lb_info.setBaseSize(QSize(150,20))
         self.lb_info.setWordWrap(True)
         # self.lb_info.setMaximumWidth(80)
         self.lb_info.setAlignment(Qt.AlignmentFlag.AlignRight)

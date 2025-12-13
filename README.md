@@ -128,4 +128,8 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 - [ ] cargar mas temas
 - [ ] cargar configuracion por default
 
-
+## FRAMELESS
+- ya agregue la ventana frameless `ui`
+- cambie el tamaño de los iconos de la playlist
+- [ ] arreglar borde
+- [ ] agregar redimension abajo derecha

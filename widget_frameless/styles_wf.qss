@@ -1,0 +1,42 @@
+QWidget#wg_container {
+    background-color: #151419;
+    border: 1px solid #3d3d3d;
+    border-radius: 10px;
+}
+
+QFrame#fr_bar {
+    background-color: #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid #101010;
+}
+
+QPushButton {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+}
+
+QPushButton:hover {
+    background-color: #202020;
+    border-radius: 3px;
+}
+
+QPushButton#btn_close:hover {
+    background-color: #e81123;
+}
+
+QLabel {
+    color: #F9F4EE;
+}
+
+QStackedWidget {
+    background-color: #151419;
+}
+
+QSizeGrip {
+    background-color: transparent;
+    width: 6px;
+    height: 20px;
+}
+

@@ -9,3 +9,5 @@ tests/
 *.qrc
 *.dll
 extras/
+*.zip
+

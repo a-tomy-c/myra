@@ -22,10 +22,11 @@ class MiVentana(WidgetPlayer):
         # vly = QVBoxLayout(self)
         # vly.addWidget()
         self.wplaylist = WidgetPlaylist()
+        self.wplaylist.setObjectName('wplaylist')
         self.vly_widget.addWidget(self.wplaylist)
         # self.vly_widget.setContentsMargins(0, 6, 0, 0) # linea 203 wplayer
         self.wplaylist.tw_playlist.cellDoubleClicked.connect(self.select)
-        self.btn_playlist.clicked.connect(self.toggle_playlist)
+        # self.btn_playlist.clicked.connect(self.toggle_playlist)
         pol = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Ignored)
         self.widget.setSizePolicy(pol)
         self.sld_volume.sliderMoved.connect(self.set_volume)

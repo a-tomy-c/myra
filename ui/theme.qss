@@ -5,6 +5,9 @@
 QPushButton {
     background-color: #101010;
 }
+QPushButton:hover {
+    background-color: #000000;
+}
 QHeaderView::section{
     background-color: #181818;
     padding: 0;
@@ -33,7 +36,7 @@ QTableWidget::item:focus {
 }
 QMenu {
     background-color: #181818;
-    border: 2px solid #181818;
+    border: 2px solid #303030;
 }
 QMenu::item:selected {
     background-color: #0F0C07;
@@ -99,3 +102,5 @@ QToolTip {
     background: #C6AE82;
     margin: 1px 2px;
 }
+
+

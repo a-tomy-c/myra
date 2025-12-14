@@ -103,14 +103,13 @@ class MiVentana(WidgetPlayer):
 
     def _menu_actions(self):
         self.actionNew_Url.triggered.connect(self.wplaylist.dialog_add_url)
-        self.actionQuit.triggered.connect(self.close)
+        # self.actionQuit.triggered.connect(self.close)
         self.actionOpen.triggered.connect(self.wplaylist.playlist_open)
         self.actionAppend.triggered.connect(self.wplaylist.playlist_append)
         self.actionSave.triggered.connect(self.wplaylist.playlist_save)
         self.actionclear.triggered.connect(self.wplaylist.element.clear)
         self.actionReload_Title.triggered.connect(self.set_metadata)
-        self.actiontoggle_playlist.triggered.connect(self.toggle_playlist)
-
+        # self.actiontoggle_playlist.triggered.connect(self.toggle_playlist)
 
     def _enable_shortcuts(self):
         d = {

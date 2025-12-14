@@ -64,7 +64,7 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
 QSlider::handle:horizontal {
     background: #0F0C07;
     border: 1px solid #C6AE82;
-    width: 16px;
+    width: 12px;
     height: 16px;
     margin: -3px 0;
     border-radius: 1px;
@@ -103,4 +103,19 @@ QToolTip {
     margin: 1px 2px;
 }
 
-
+QSlider::handle:horizontal#sld_size_icons {
+    background: #0F0C07;
+    border: 1px solid #373B3C;
+    width: 10px;
+    height: 16px;
+    margin: -3px 0;
+    border-radius: 1px;
+}
+QSlider::sub-page:horizontal#sld_size_icons {
+    background: #373B3C;
+    border-radius: 4px;
+}
+QSlider::add-page:horizontal#sld_size_icons {
+    border: 1px solid #373B3C;
+    border-radius: 4px;
+}

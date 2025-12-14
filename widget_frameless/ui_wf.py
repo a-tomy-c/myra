@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 
 ################################################################################
 ## Form generated from reading UI file 'ui_widget_frameless.ui'
@@ -16,68 +16,30 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QPushButton, QSizePolicy, QSpacerItem, QSplitter,
-    QStackedWidget, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QStackedWidget,
+    QVBoxLayout, QWidget)
 import widget_frameless.icons.icons_wf
 
 class Ui_WidgetFrameless(object):
     def setupUi(self, WidgetFrameless):
         if not WidgetFrameless.objectName():
             WidgetFrameless.setObjectName(u"WidgetFrameless")
-        WidgetFrameless.resize(464, 334)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(WidgetFrameless.sizePolicy().hasHeightForWidth())
-        WidgetFrameless.setSizePolicy(sizePolicy)
+        WidgetFrameless.resize(669, 504)
         self.vly_wf = QVBoxLayout(WidgetFrameless)
         self.vly_wf.setSpacing(0)
         self.vly_wf.setObjectName(u"vly_wf")
         self.vly_wf.setContentsMargins(0, 0, 0, 0)
         self.wg_container = QWidget(WidgetFrameless)
         self.wg_container.setObjectName(u"wg_container")
-        self.vly_wg_container = QVBoxLayout(self.wg_container)
-        self.vly_wg_container.setSpacing(2)
-        self.vly_wg_container.setObjectName(u"vly_wg_container")
-        self.vly_wg_container.setContentsMargins(2, 0, 2, 2)
-        self.split = QSplitter(self.wg_container)
-        self.split.setObjectName(u"split")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.split.sizePolicy().hasHeightForWidth())
-        self.split.setSizePolicy(sizePolicy1)
-        self.split.setLineWidth(0)
-        self.split.setOrientation(Qt.Orientation.Horizontal)
-        self.split.setHandleWidth(0)
-        self.fr_left = QFrame(self.split)
-        self.fr_left.setObjectName(u"fr_left")
-        sizePolicy1.setHeightForWidth(self.fr_left.sizePolicy().hasHeightForWidth())
-        self.fr_left.setSizePolicy(sizePolicy1)
-        self.fr_left.setFrameShape(QFrame.Shape.NoFrame)
-        self.fr_left.setFrameShadow(QFrame.Shadow.Plain)
-        self.fr_left.setLineWidth(0)
-        self.hly_left = QHBoxLayout(self.fr_left)
-        self.hly_left.setSpacing(2)
-        self.hly_left.setObjectName(u"hly_left")
-        self.hly_left.setContentsMargins(0, 0, 0, 0)
-        self.vly_left = QVBoxLayout()
-        self.vly_left.setSpacing(2)
-        self.vly_left.setObjectName(u"vly_left")
-
-        self.hly_left.addLayout(self.vly_left)
-
-        self.split.addWidget(self.fr_left)
-        self.layoutWidget = QWidget(self.split)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.vly_in_container = QVBoxLayout(self.layoutWidget)
+        self.vly_container = QVBoxLayout(self.wg_container)
+        self.vly_container.setSpacing(0)
+        self.vly_container.setObjectName(u"vly_container")
+        self.vly_container.setContentsMargins(2, 2, 2, 2)
+        self.vly_in_container = QVBoxLayout()
         self.vly_in_container.setSpacing(0)
         self.vly_in_container.setObjectName(u"vly_in_container")
-        self.vly_in_container.setContentsMargins(0, 0, 0, 0)
-        self.fr_bar = QFrame(self.layoutWidget)
+        self.fr_bar = QFrame(self.wg_container)
         self.fr_bar.setObjectName(u"fr_bar")
-        sizePolicy.setHeightForWidth(self.fr_bar.sizePolicy().hasHeightForWidth())
-        self.fr_bar.setSizePolicy(sizePolicy)
         self.fr_bar.setMinimumSize(QSize(0, 20))
         self.fr_bar.setMaximumSize(QSize(16777215, 20))
         self.fr_bar.setFrameShape(QFrame.Shape.NoFrame)
@@ -91,6 +53,9 @@ class Ui_WidgetFrameless(object):
         self.hly_bar.setObjectName(u"hly_bar")
         self.fr_grip_no = QFrame(self.fr_bar)
         self.fr_grip_no.setObjectName(u"fr_grip_no")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.fr_grip_no.sizePolicy().hasHeightForWidth())
         self.fr_grip_no.setSizePolicy(sizePolicy)
         self.fr_grip_no.setMaximumSize(QSize(6, 16777215))
@@ -114,7 +79,7 @@ class Ui_WidgetFrameless(object):
         self.btn_logo.setMinimumSize(QSize(20, 20))
         self.btn_logo.setMaximumSize(QSize(20, 20))
         icon = QIcon()
-        icon.addFile(u":/tw.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/tw.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_logo.setIcon(icon)
         self.btn_logo.setIconSize(QSize(20, 20))
         self.btn_logo.setFlat(True)
@@ -125,7 +90,7 @@ class Ui_WidgetFrameless(object):
         self.btn_title.setObjectName(u"btn_title")
         self.btn_title.setMinimumSize(QSize(0, 20))
         self.btn_title.setMaximumSize(QSize(80, 20))
-        self.btn_title.setIconSize(QSize(24, 24))
+        self.btn_title.setIconSize(QSize(20, 20))
         self.btn_title.setFlat(True)
 
         self.hly_bar.addWidget(self.btn_title)
@@ -232,10 +197,8 @@ class Ui_WidgetFrameless(object):
 
         self.vly_in_container.addWidget(self.fr_bar)
 
-        self.sw = QStackedWidget(self.layoutWidget)
+        self.sw = QStackedWidget(self.wg_container)
         self.sw.setObjectName(u"sw")
-        sizePolicy.setHeightForWidth(self.sw.sizePolicy().hasHeightForWidth())
-        self.sw.setSizePolicy(sizePolicy)
         self.page_0 = QWidget()
         self.page_0.setObjectName(u"page_0")
         self.vly_page_0 = QVBoxLayout(self.page_0)
@@ -257,6 +220,7 @@ class Ui_WidgetFrameless(object):
         self.vly_page_1.setObjectName(u"vly_page_1")
         self.vly_page_1.setContentsMargins(0, 0, 0, 0)
         self.vly_body_aux = QVBoxLayout()
+        self.vly_body_aux.setSpacing(4)
         self.vly_body_aux.setObjectName(u"vly_body_aux")
 
         self.vly_page_1.addLayout(self.vly_body_aux)
@@ -265,12 +229,9 @@ class Ui_WidgetFrameless(object):
 
         self.vly_in_container.addWidget(self.sw)
 
-        self.fr_status_bar = QFrame(self.layoutWidget)
+        self.fr_status_bar = QFrame(self.wg_container)
         self.fr_status_bar.setObjectName(u"fr_status_bar")
-        sizePolicy.setHeightForWidth(self.fr_status_bar.sizePolicy().hasHeightForWidth())
-        self.fr_status_bar.setSizePolicy(sizePolicy)
-        self.fr_status_bar.setMinimumSize(QSize(0, 20))
-        self.fr_status_bar.setMaximumSize(QSize(16777215, 20))
+        self.fr_status_bar.setMinimumSize(QSize(0, 0))
         self.fr_status_bar.setFrameShape(QFrame.Shape.NoFrame)
         self.fr_status_bar.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout_5 = QVBoxLayout(self.fr_status_bar)
@@ -287,6 +248,7 @@ class Ui_WidgetFrameless(object):
         self.hly_status_bar.setObjectName(u"hly_status_bar")
         self.fr_statusbar_left = QFrame(self.wg_status_bar)
         self.fr_statusbar_left.setObjectName(u"fr_statusbar_left")
+        self.fr_statusbar_left.setMaximumSize(QSize(16777215, 20))
         self.fr_statusbar_left.setFrameShape(QFrame.Shape.NoFrame)
         self.fr_statusbar_left.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout = QVBoxLayout(self.fr_statusbar_left)
@@ -329,6 +291,7 @@ class Ui_WidgetFrameless(object):
 
         self.fr_statusbar_mid = QFrame(self.wg_status_bar)
         self.fr_statusbar_mid.setObjectName(u"fr_statusbar_mid")
+        self.fr_statusbar_mid.setMaximumSize(QSize(16777215, 20))
         self.fr_statusbar_mid.setFrameShape(QFrame.Shape.NoFrame)
         self.fr_statusbar_mid.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout_2 = QVBoxLayout(self.fr_statusbar_mid)
@@ -374,6 +337,7 @@ class Ui_WidgetFrameless(object):
 
         self.fr_statusbar_right = QFrame(self.wg_status_bar)
         self.fr_statusbar_right.setObjectName(u"fr_statusbar_right")
+        self.fr_statusbar_right.setMaximumSize(QSize(16777215, 20))
         self.fr_statusbar_right.setFrameShape(QFrame.Shape.NoFrame)
         self.fr_statusbar_right.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout_4 = QVBoxLayout(self.fr_statusbar_right)
@@ -397,27 +361,8 @@ class Ui_WidgetFrameless(object):
 
         self.vly_in_container.addWidget(self.fr_status_bar)
 
-        self.split.addWidget(self.layoutWidget)
-        self.fr_right = QFrame(self.split)
-        self.fr_right.setObjectName(u"fr_right")
-        sizePolicy1.setHeightForWidth(self.fr_right.sizePolicy().hasHeightForWidth())
-        self.fr_right.setSizePolicy(sizePolicy1)
-        self.fr_right.setFrameShape(QFrame.Shape.NoFrame)
-        self.fr_right.setFrameShadow(QFrame.Shadow.Plain)
-        self.fr_right.setLineWidth(0)
-        self.hly_right = QHBoxLayout(self.fr_right)
-        self.hly_right.setSpacing(2)
-        self.hly_right.setObjectName(u"hly_right")
-        self.hly_right.setContentsMargins(0, 0, 0, 0)
-        self.vly_right = QVBoxLayout()
-        self.vly_right.setSpacing(2)
-        self.vly_right.setObjectName(u"vly_right")
 
-        self.hly_right.addLayout(self.vly_right)
-
-        self.split.addWidget(self.fr_right)
-
-        self.vly_wg_container.addWidget(self.split)
+        self.vly_container.addLayout(self.vly_in_container)
 
 
         self.vly_wf.addWidget(self.wg_container)

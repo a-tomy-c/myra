@@ -131,5 +131,11 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 ## FRAMELESS
 - ya agregue la ventana frameless `ui`
 - cambie el tamaño de los iconos de la playlist
-- [ ] arreglar borde
+- [x] arreglar borde
 - [ ] agregar redimension abajo derecha
+- fix show / hide playlist
+- actualize el frameless y ahora ya no hay problema con las esquinas (bordes)
+- fix: cerrar ventana
+- agregue la ventana dialogo (con info basica)
+- cambie el estilo del slider, para los iconos
+

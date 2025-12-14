@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'skin_pp.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.9.1
+## Created by: Qt User Interface Compiler version 6.9.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -56,7 +56,7 @@ class Ui_MyraPlayer(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(4, 4, 4, 4)
         self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setSpacing(6)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.fm_top = QFrame(self.centralwidget)
         self.fm_top.setObjectName(u"fm_top")
@@ -67,7 +67,7 @@ class Ui_MyraPlayer(object):
         self.fm_top.setLineWidth(0)
         self.horizontalLayout_2 = QHBoxLayout(self.fm_top)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 6)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.fm_cover = QFrame(self.fm_top)
@@ -216,7 +216,7 @@ class Ui_MyraPlayer(object):
         MyraPlayer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MyraPlayer)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 433, 22))
+        self.menubar.setGeometry(QRect(0, 0, 433, 30))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuPlaylist = QMenu(self.menubar)
@@ -242,8 +242,6 @@ class Ui_MyraPlayer(object):
         self.menuTools.addAction(self.actionReload_Title)
         self.menuTools.addAction(self.actiontoggle_playlist)
         self.menuTools.addSeparator()
-        self.menuTools.addAction(self.actionOpen_Config)
-        self.menuTools.addAction(self.actionReload_Ui)
 
         self.retranslateUi(MyraPlayer)
 

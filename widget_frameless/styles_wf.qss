@@ -1,14 +1,15 @@
 QWidget#wg_container {
     background-color: #151419;
-    border: 1px solid #3d3d3d;
-    border-radius: 10px;
+    border: 1px solid #1d1d1d;
+    border-radius: 6px;
 }
-
+QStackedWidget#sw, QWidget#page_0, QWidget#page_1, QWidget#body {
+    border-radius: 4px;
+}
 QFrame#fr_bar {
     background-color: #000000;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom: 1px solid #101010;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 QPushButton {
@@ -18,7 +19,7 @@ QPushButton {
 }
 
 QPushButton:hover {
-    background-color: #202020;
+    background-color: #262612;
     border-radius: 3px;
 }
 
@@ -40,3 +41,20 @@ QSizeGrip {
     height: 20px;
 }
 
+QMenu {
+    background-color: #202020;
+    border: 1px solid #404040;
+}
+QMenu::item {
+    color: #bbbbbb;
+}
+QMenu::item:selected {
+    background-color: #0F0C07;
+    color: azure;
+}
+QDialog {
+    background-color: #0F0C07;
+}
+QTextEdit#about_info {
+    background-color: transparent;
+}

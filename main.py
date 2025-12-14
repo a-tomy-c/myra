@@ -13,8 +13,8 @@ class MyraPlayer(WidgetFrameless):
 
     def __cnf_MyraPlayer(self):
         self.resize(430, 550)
-        self.fr_left.setHidden(True)
-        self.fr_right.setHidden(True)
+        # self.fr_left.setHidden(True)
+        # self.fr_right.setHidden(True)
 
         self.mv = MiVentana(self)
         self.vly_body.addWidget(self.mv)
@@ -26,8 +26,21 @@ class MyraPlayer(WidgetFrameless):
         self.mv.wplaylist.btn_up.setIconSize(QSize(20,20))
         self.mv.wplaylist.btn_down.setIconSize(QSize(20,20))
         self.mv.btn_playlist.clicked.connect(self.toggle_playlist)
-        # self.setStyleSheet('QWidget#MyraPlayer {border-radius: 10px;border: 1px solid #804560;background:blue;}')
+        self.mv.actionQuit.triggered.connect(self.close)
+        self.mv.actionInfo.triggered.connect(self.show_about)
+        self.mv.actiontoggle_playlist.triggered.connect(self.toggle_playlist)
 
+        self.about.set_image(":/w/orange.svg")
+        self.about.set_text_title('MYRA')
+        self.about.set_text_aux('RADIO PLAYER')
+        self.about.set_text('realizado por: ')
+        self.about.set_text('Tomy', fg='yellowgreen', br=True)
+        self.about.set_text('version: ')
+        self.about.set_text('1.0', fg='salmon', br=True)
+        self.about.set_text('https://github.com/a-tomy-c/myra', fg='lightblue')
+        
+        
+        # self.about.test()
 
     def toggle_playlist(self):
         self.set_text_info_aux('toggle playlist', fg='azure')

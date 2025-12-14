@@ -1,8 +1,62 @@
 from os import stat
-from PySide6.QtGui import QIcon, QMouseEvent, QWindow
-from PySide6.QtWidgets import QApplication, QLabel, QSizeGrip, QWidget, QVBoxLayout
-from PySide6.QtCore import Qt, QPoint
+from PySide6.QtGui import QAction, QIcon, QMouseEvent, QPixmap, QResizeEvent, QWindow
+from PySide6.QtWidgets import QApplication, QDialog, QLabel, QMenu, QSizeGrip, QWidget, QVBoxLayout
+from PySide6.QtCore import QTime, Qt, QPoint, QSize, QTimer
 from widget_frameless.ui_wf import Ui_WidgetFrameless
+from widget_frameless.ui_dabout import Ui_DialogAbout
+
+
+class _DialogAbout(QDialog, Ui_DialogAbout):
+    def __init__(self, *args, **kw):
+        super().__init__(*args, **kw)
+        self.setupUi(self)
+        self.resize(500, 180)
+        font = self.te_info.font()
+        font.setPointSize(12)
+        # font.setFamily('Verdana')
+        self.te_info.setFont(font)
+        # self.test()
+
+    def set_image(self, path_image:str):
+        pix = QPixmap(path_image)
+        pix_scaled = pix.scaled(QSize(150, 150))
+        self.lb_logo.setPixmap(pix_scaled)
+
+    def set_text(self, text:str, fg:str='white', br=False, bold=False):
+        if bold:
+            text = f'<b>{text}</b>'
+        br = '<br>' if br else ''
+        self.te_info.insertHtml(f'<span style=color:{fg};>{text}</span>{br}')
+
+    def test(self):
+        self.set_image('widget_frameless/icons/tw.png')
+        self.set_text('version: ', 'gray')
+        self.set_text('0.1', 'salmon', br=True)
+        # self.set_icon(':w-bug.svg')
+        self.set_text('https://github.com/a-tomy-c/frameless_window_pyside6', 'skyblue')
+        self.set_text_title('Frameless window')
+        self.set_text_aux('PySide6 - Widget')
+        self.set_title('Frameless')
+
+    def set_icon(self, icon:str):
+        qicon = QIcon(icon)
+        pix = qicon.pixmap(QSize(150,150), QIcon.Mode.Normal)
+        self.lb_logo.setPixmap(pix)
+
+    def _to_lb(self, lb:QLabel, text:str, fg:str='gray', bold:bool=True, size:int=14):
+        lb.setText(text)
+        lb.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        tp = 'bold' if bold else 'normal'
+        lb.setStyleSheet(f'color:{fg};font-weight:{tp};font-size:{size}px;')
+        
+    def set_text_aux(self, text:str, fg:str='gray', bold:bool=True, size:int=14):
+        self._to_lb(self.lb_aux, text, fg, bold, size)
+
+    def set_text_title(self, text:str, fg:str='white', bold:bool=True, size:int=18):
+        self._to_lb(self.lb_title, text, fg, bold, size)    
+
+    def set_title(self, text:str):
+        self.setWindowTitle(text)
 
 
 class WidgetFrameless(QWidget, Ui_WidgetFrameless):
@@ -20,6 +74,7 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
         self.btn_maximize.clicked.connect(self.toggle_maximize)
         self.btn_minimize.clicked.connect(self.showMinimized)
         self.btn_lock.clicked.connect(self.toggle_on_top)
+        self.btn_title.clicked.connect(self.show_menu)
         self.btn_left.hide()
         self.btn_right.hide()
         self.lb_info.setAttribute(Qt.WA_TransparentForMouseEvents)
@@ -35,8 +90,21 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
         self._szgrip_so = QSizeGrip(self.fr_grip_so)
         self.hly_sb_grip_so.addWidget(self._szgrip_so)
 
-        self._load_style()
+        self.about = _DialogAbout()
         self.set_on_top(False)
+        self.about.setObjectName('about')
+        self.about.te_info.setObjectName('about_info')
+        self.btn_lock.setIconSize(QSize(14, 14))
+        self.btn_logo.setHidden(True)
+
+        self.timer_lbaux = QTimer()
+        self.timer_lbaux.setSingleShot(True)
+        self.timer_lbaux.timeout.connect(lambda: self.lb_info_aux.setText(''))
+        self.timer_sb = QTimer()
+        self.timer_sb.setSingleShot(True)
+        self.timer_sb.timeout.connect(lambda: self.lb_statusbar_left.setText(''))
+        self.set_icon(':/tw.svg')
+        self._load_style()
 
     def toggle_maximize(self):
         if self.isMaximized():
@@ -67,9 +135,11 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
             text = wlb.text() + text
         wlb.setText(f'<span style=color:{fg};>{text}</span>')
         
-    def msg_statusbar(self, text:str, fg:str='white', append=False, bold=False):
+    def msg_statusbar(self, text:str, fg:str='white', append=False, bold=False, mseg=4000):
         """asigna texto a la statusbar a la izquierda"""
         self._text_to_bar(self.lb_statusbar_left, text, fg, append, bold)
+        if mseg > 1000 and hasattr(self, 'timer_sb'):
+            self.timer_sb.start(mseg)
 
     def _load_style(self):
         path_file = 'widget_frameless/styles_wf.qss'
@@ -78,8 +148,9 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
                 style = f.read()
                 self.setStyleSheet(style)
                 self.msg_statusbar('style_wf.qss cargado', 'yellowgreen')
+                self.about.setStyleSheet(style)
         except FileNotFoundError:
-            self.msg_statusbar('styles_wf.qss no encontrado.')
+            self.msg_statusbar('styles_wf.qss no encontrado.')        
 
     def set_on_top(self, enable:bool):
         current_flags = self.windowFlags()
@@ -98,20 +169,27 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
     def toggle_on_top(self):
         self.set_on_top(self.btn_lock.isChecked())
 
-    def set_title(self, text:str, fg:str, bg:str):
+    def set_title(self, text:str, fg:str, bg:str='black', mod:int=10):
         """asigna titulo"""
         self.btn_title.setText(text)
         self.btn_title.setStyleSheet(f'color:{fg}; background-color:{bg};')
-        self.btn_title.setMinimumWidth(len(text)*8)
+        self.btn_title.setMinimumWidth(len(text)*mod)
+        self.btn_title.setMaximumWidth(len(text)*mod)
+        # self.btn_title.setBaseSize(len(text)*mod, 24)
+        self.about.set_text_title(text)
+        self.about.set_title(text)
 
     def set_icon(self, icon:str):
         """asigna icono al boton icono"""
-        self.btn_logo.setIcon(QIcon(icon))
+        self.btn_title.setIcon(QIcon(icon))
 
-    def set_text_info_aux(self, text:str, fg:str='white', append=False, bold=False):
+    def set_text_info_aux(self, text:str, fg:str='white', append=False, bold=False, mseg:int=0):
         """asigna texto a la barra de titulo a la derecha"""
         self._text_to_bar(self.lb_info_aux, text, fg, append, bold)
         self.lb_info_aux.setMaximumWidth(len(text)*8)
+        if mseg > 1000 and hasattr(self, 'timer_lbaux'):
+            self.timer_lbaux.start(mseg)
+
 
     def set_text_info(self, text:str, fg:str='white', append=False, bold=False):
         """asigna texto a la barra de titulo a la izquierda"""
@@ -136,4 +214,31 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
     def add_to_statusbar_right(self, widget:QWidget):
         """agregar widget al statusbar DERECHA"""
         self.hly_sb_right.addWidget(widget)
+
+    def show_menu(self):
+        menu = QMenu(self)
+        item0 = QAction('About', self)
+        item0.triggered.connect(self.show_about)
+        menu.addAction(item0)
+        
+        # item1 = QAction('Reload Style')
+        # item1.triggered.connect(self._load_style)
+        # menu.addAction(item1)
+        
+        item_x = QAction('Close', self)
+        item_x.triggered.connect(self.close)
+        menu.addAction(item_x)
+        pos = self.btn_title.mapToGlobal(self.btn_title.rect().bottomLeft())
+        menu.exec(pos)
+
+    def show_about(self):
+        self.about.exec()
+
+    def show_statusbar(self, show=True):
+        self.fr_status_bar.setHidden(not show)
+
+    def resizeEvent(self, event:QResizeEvent):
+        gm = self.geometry()
+        self.set_text_info_aux(f'{gm.width()} x {gm.height()}', mseg=2000)
+        
     

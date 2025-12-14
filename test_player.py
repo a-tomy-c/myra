@@ -121,7 +121,7 @@ class MiVentana(WidgetPlayer):
 
     def load_theme(self):
         """carga los estilos del tema por default"""
-        filepath = 'ui/theme.qss'
+        filepath = 'core_myra/theme.qss'
         with open(filepath, 'r', encoding='utf-8') as file:
             style = file.read()
             app = QApplication.instance()

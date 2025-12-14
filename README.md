@@ -139,4 +139,7 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 - agregue la ventana dialogo (con info basica)
 - cambie el estilo del slider, para los iconos
 - fix toggle playlist 'spacing'
+- he movido los .qss e imagenes a core_myra, para que esten en un solo lugar
+- h eagregado el icono de myra player
+-
 

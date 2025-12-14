@@ -29,7 +29,7 @@ class _DialogAbout(QDialog, Ui_DialogAbout):
         self.te_info.insertHtml(f'<span style=color:{fg};>{text}</span>{br}')
 
     def test(self):
-        self.set_image('widget_frameless/icons/tw.png')
+        self.set_image('core_myra/tw.png')
         self.set_text('version: ', 'gray')
         self.set_text('0.1', 'salmon', br=True)
         # self.set_icon(':w-bug.svg')
@@ -142,7 +142,7 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
             self.timer_sb.start(mseg)
 
     def _load_style(self):
-        path_file = 'widget_frameless/styles_wf.qss'
+        path_file = 'core_myra/styles_wf.qss'
         try:
             with open(path_file, 'r', encoding='utf-8') as f:
                 style = f.read()

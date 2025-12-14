@@ -36,7 +36,7 @@ class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
     def set_cover(self, image:str, size:int=80):
         """asigna cover al player"""
         if not Path(image).exists():
-            image = 'covers/default.jpg'
+            image = 'core_myra/default.jpg'
         if Path(image).exists():
             pix = QPixmap(QImage(image).scaledToWidth(size))
             self.lb_cover.setPixmap(get_rounded_cover(pix, 24))

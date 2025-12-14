@@ -138,4 +138,5 @@ los items que no estan aqui o no estan marcados aun no hacen nada (no los he enl
 - fix: cerrar ventana
 - agregue la ventana dialogo (con info basica)
 - cambie el estilo del slider, para los iconos
+- fix toggle playlist 'spacing'
 

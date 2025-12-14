@@ -39,8 +39,11 @@ class MyraPlayer(WidgetFrameless):
         self.about.set_text('1.0', fg='salmon', br=True)
         self.about.set_text('https://github.com/a-tomy-c/myra', fg='lightblue')
         
-        
         # self.about.test()
+        # self.mv.fm_top.setStyleSheet('background:green;')
+        self.mv.fm_top.setMinimumHeight(84)
+        self.mv.fm_top.setMaximumHeight(84)
+        
 
     def toggle_playlist(self):
         self.set_text_info_aux('toggle playlist', fg='azure')
@@ -50,7 +53,7 @@ class MyraPlayer(WidgetFrameless):
             self.resize(430, 550)
         else:
             self.mv.widget.hide()
-            self.resize(430, 140)
+            self.resize(430, 142)
 
 if __name__ == "__main__":
     import sys

@@ -79,7 +79,7 @@ class WidgetFrameless(QWidget, Ui_WidgetFrameless):
         self.btn_right.hide()
         self.lb_info.setAttribute(Qt.WA_TransparentForMouseEvents)
         self.lb_info_aux.setAttribute(Qt.WA_TransparentForMouseEvents)
-        self.hly_bar.setContentsMargins(4,0,0,0)
+        self.hly_bar.setContentsMargins(0,0,0,0)
 
         self._szgrip_se = QSizeGrip(self.fr_grip_se)
         self.hly_sb_grip_se.addWidget(self._szgrip_se)

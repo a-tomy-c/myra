@@ -28,6 +28,10 @@ class WidgetPlayer(QMainWindow, Ui_MyraPlayer):
         font = QFont()
         font.setPointSize(8)
         self.lb_info.setFont(font)
+        self.horizontalLayout_2.setContentsMargins(0,0,0,6)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout.setSpacing(6) # espacio entre labels y imagen
+        self.horizontalLayout_3.setContentsMargins(4,4,4,0)
 
     def set_cover(self, image:str, size:int=80):
         """asigna cover al player"""
